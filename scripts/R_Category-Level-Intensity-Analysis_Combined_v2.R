@@ -101,7 +101,6 @@ colnames(subMIBNPl) <- c(list)
 catALL <- rbind(subMINDRg, subMINDRl, subMCWSg, subMCWSl, subMIBNPg, subMIBNPl)
 
 # 7. Replace "Undefined" cells as 0 and convert ColF and ColK to numeric data types
-#catALL[catALL=="Undefined"] <- 0
 catALL <- transform(catALL, ColF = as.numeric(ColF), ColK = as.numeric(ColK))
 
 # Generate Plots ------------------------
