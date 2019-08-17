@@ -10,7 +10,7 @@
 # Last Modified:  17 Jul 2019
 
 # Set Working Directory -------------------
-setwd("/Users/dondealban/Research/Mindoro/intensity analysis/")
+setwd("/Users/dondealban/Dropbox/Research/Mindoro/intensity analysis/")
 
 # Load Libraries --------------------------
 library(tidyverse)
@@ -37,12 +37,11 @@ csvMIBNP <- read.csv(file="Interval_Level_PA_MIBNP.csv", header=TRUE, sep=",")
 
 # Add new column with site name
 csvMINDR$Site <- c("Mindoro Island")
-csvMCWS$Site  <- c("PA MCWS")
-csvMIBNP$Site <- c("PA MIBNP")
-csvNLNP$Site  <- c("PA NLNP")
+csvMCWS$Site  <- c("Calavite")
+csvMIBNP$Site <- c("Iglit-Baco")
 
 # Combine data frames
-csvINT <- rbind(csvMINDR, csvMCWS, csvMIBNP, csvNLNP)
+csvINT <- rbind(csvMINDR, csvMCWS, csvMIBNP)
 
 # Rename column names
 colnames(csvINT) <- c("Time.Interval","Obs.Change","Ann.Change","Uni.Ann.Change",
