@@ -1,16 +1,17 @@
 # Script Description --------------------
 # This R script generates barplots using ggplot2 package to visualise the transition-level
-# intensity analysis of mangrove cover changes in selected coastal regions of Myanmar,
-# derived from land cover classification of combined Landsat and L-band SAR data for two
-# time-intervals: 1996-2007 and 2007-2016. Intensity analysis was calculated using an 
-# Excel spreadsheet with a VBA macro (see https://sites.google.com/site/intensityanalysis/).
+# intensity analysis of of changes in Mindoro Island, Philippines derived from land cover
+# classification of Landsat data for three time-intervals: 1988-2000, 2000-2010, and
+# 2010-2015. Intensity analysis was calculated using an Excel spreadsheet with a VBA macro
+# (see https://sites.google.com/site/intensityanalysis/). The domain of analysis is
+# Mindoro Island.
 #
 # Script By:      Jose Don T De Alban
 # Date Created:   13 Mar 2018
-# Last Modified:  02 Aug 2019
+# Last Modified:  17 Aug 2019
 
 # Set Working Directory -------------------
-setwd("/Users/dondealban/Dropbox/Research/myanmar/3 mmr land cover transitions/mangroves/intensity analysis/macros/")
+setwd("/Users/dondealban/Dropbox/Research/Mindoro/intensity analysis/")
 
 # Load Libraries --------------------------
 library(tidyverse)
