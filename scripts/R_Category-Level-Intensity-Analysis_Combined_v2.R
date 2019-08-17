@@ -26,8 +26,6 @@ dfMCWSg  <- as.data.frame(read_excel("Category_Level_Intensity_Analysis_ALL.xlsx
 dfMCWSl  <- as.data.frame(read_excel("Category_Level_Intensity_Analysis_ALL.xlsx", sheet="Loss_MCWS"))
 dfMIBNPg <- as.data.frame(read_excel("Category_Level_Intensity_Analysis_ALL.xlsx", sheet="Gain_MIBNP"))
 dfMIBNPl <- as.data.frame(read_excel("Category_Level_Intensity_Analysis_ALL.xlsx", sheet="Loss_MIBNP"))
-dfNLNPg  <- as.data.frame(read_excel("Category_Level_Intensity_Analysis_ALL.xlsx", sheet="Gain_NLNP"))
-dfNLNPl  <- as.data.frame(read_excel("Category_Level_Intensity_Analysis_ALL.xlsx", sheet="Loss_NLNP"))
 
 # Clean and Subset Data -------------------
 
@@ -38,18 +36,12 @@ subMCWSg  <- subset(dfMCWSg, select=c(1,3:11))
 subMCWSl  <- subset(dfMCWSl, select=c(1,3:11))
 subMIBNPg <- subset(dfMIBNPg, select=c(1,3:11)) 
 subMIBNPl <- subset(dfMIBNPl, select=c(1,3:11))
-subNLNPg  <- subset(dfNLNPg, select=c(1,3:11)) 
-subNLNPl  <- subset(dfNLNPl, select=c(1,3:11))
 
 # *Remove classes: MNG, BUA, WTR for this domain of analysis
 # Mts Iglit-Baco National Park
 remove.list1 <- paste(c("MNG","BUA","WTR"), collapse='|')
 subMIBNPg <- subMIBNPg %>% filter(!grepl(remove.list1, subMIBNPg$Category_Name))
 subMIBNPl <- subMIBNPl %>% filter(!grepl(remove.list1, subMIBNPl$Category_Name))
-# Naujan Lake National Park
-remove.list2 <- paste(c("GRA","BUA","ERK"), collapse='|')
-subNLNPg <- subNLNPg %>% filter(!grepl(remove.list2, subNLNPg$Category_Name))
-subNLNPl <- subNLNPl %>% filter(!grepl(remove.list2, subNLNPl$Category_Name))
 
 # 2. Add Change Type column
 # Mindoro Island
@@ -62,24 +54,17 @@ subMINDRl <- cbind(subMINDRl, type2a, site2a)
 # Mt Calavite Wildlife Sanctuary
 type1b <- rep("Gain", nrow(subMCWSg))
 type2b <- rep("Loss", nrow(subMCWSl))
-site1b <- rep("PA MCWS", nrow(subMCWSg))
-site2b <- rep("PA MCWS", nrow(subMCWSl))
+site1b <- rep("Mt Calavite WS", nrow(subMCWSg))
+site2b <- rep("Mt Calavite WS", nrow(subMCWSl))
 subMCWSg <- cbind(subMCWSg, type1b, site1b)
 subMCWSl <- cbind(subMCWSl, type2b, site2b)
 # Mts Iglit-Baco National Park
 type1c <- rep("Gain", nrow(subMIBNPg))
 type2c <- rep("Loss", nrow(subMIBNPl))
-site1c <- rep("PA MIBNP", nrow(subMIBNPg))
-site2c <- rep("PA MIBNP", nrow(subMIBNPl))
+site1c <- rep("Mts Iglit-Baco NP", nrow(subMIBNPg))
+site2c <- rep("Mts Iglit-Baco NP", nrow(subMIBNPl))
 subMIBNPg <- cbind(subMIBNPg, type1c, site1c)
 subMIBNPl <- cbind(subMIBNPl, type2c, site2c)
-# Naujan Lake National Park
-type1d <- rep("Gain", nrow(subNLNPg))
-type2d <- rep("Loss", nrow(subNLNPl))
-site1d <- rep("PA NLNP", nrow(subNLNPg))
-site2d <- rep("PA NLNP", nrow(subNLNPl))
-subNLNPg <- cbind(subNLNPg, type1d, site1d)
-subNLNPl <- cbind(subNLNPl, type2d, site2d)
 
 # 3. Reorder columns before renaming
 subMINDRg <- subMINDRg[,c(1:2,11,12,3:10)]
@@ -88,8 +73,6 @@ subMCWSg  <- subMCWSg[,c(1:2,11,12,3:10)]
 subMCWSl  <- subMCWSl[,c(1:2,11,12,3:10)]
 subMIBNPg <- subMIBNPg[,c(1:2,11,12,3:10)]
 subMIBNPl <- subMIBNPl[,c(1:2,11,12,3:10)]
-subNLNPg  <- subNLNPg[,c(1:2,11,12,3:10)]
-subNLNPl  <- subNLNPl[,c(1:2,11,12,3:10)]
 
 # 4. Change column names for easier reference
 # Note the following description of category level column names
@@ -113,11 +96,9 @@ colnames(subMCWSg)  <- c(list)
 colnames(subMCWSl)  <- c(list)
 colnames(subMIBNPg) <- c(list)
 colnames(subMIBNPl) <- c(list)
-colnames(subNLNPg)  <- c(list)
-colnames(subNLNPl)  <- c(list)
 
 # 6. Combine separate Loss and Gain datasets into one dataframe
-catALL <- rbind(subMINDRg, subMINDRl, subMCWSg, subMCWSl, subMIBNPg, subMIBNPl, subNLNPg, subNLNPl)
+catALL <- rbind(subMINDRg, subMINDRl, subMCWSg, subMCWSl, subMIBNPg, subMIBNPl)
 
 # 7. Replace "Undefined" cells as 0 and convert ColF and ColK to numeric data types
 #catALL[catALL=="Undefined"] <- 0
