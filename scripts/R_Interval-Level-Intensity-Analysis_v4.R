@@ -37,8 +37,8 @@ csvMIBNP <- read.csv(file="Interval_Level_PA_MIBNP.csv", header=TRUE, sep=",")
 
 # Add new column with site name
 csvMINDR$Site <- c("Mindoro Island")
-csvMCWS$Site  <- c("Calavite")
-csvMIBNP$Site <- c("Iglit-Baco")
+csvMCWS$Site  <- c("Mt Calavite WS")
+csvMIBNP$Site <- c("Mts Iglit-Baco NP")
 
 # Combine data frames
 csvINT <- rbind(csvMINDR, csvMCWS, csvMIBNP)
@@ -50,8 +50,6 @@ colnames(csvINT) <- c("Time.Interval","Obs.Change","Ann.Change","Uni.Ann.Change"
 # Select columns: time interval, observed change rate, uniform change rate, site
 dfINT <- subset(csvINT, select=c(1,3:4,9))
 dfINT$Time.Interval <- gsub('_', '-', dfINT$Time.Interval) # Replace character in column
-#dfINT[,3] <- as.numeric(dfINT[,3]) # Change column to numeric class
-#uINT <- dfINT$Uni.Change[1] # Store uniform intensity value as constant in a variable
 
 # Generate Plots ------------------------
 
@@ -68,5 +66,5 @@ plotINT <- plotINT  + theme(panel.grid.minor=element_blank())
 # Save Output Plots -----------------------
 
 # Output boxplots to a PDF file
-ggsave(plotINT, file="Mindoro-Interval-Level-Intensity-Analysis_v3.pdf", width=16, height=15, units="cm", dpi=300)
+ggsave(plotINT, file="Mindoro-Interval-Level-Intensity-Analysis_v4.pdf", width=20, height=10, units="cm", dpi=300)
 
