@@ -20,8 +20,8 @@ library(readxl)
 # Read Input Data -------------------------
 
 # Read transition level XLSX data file, convert to data frame, and store into variable
-rawG <- as.data.frame(read_excel("Transition_Level_Intensity_Analysis.xlsx", sheet="MNG_Gain"))
-rawL <- as.data.frame(read_excel("Transition_Level_Intensity_Analysis.xlsx", sheet="MNG_Loss"))
+rawG <- as.data.frame(read_excel("Transition_Level_Intensity_Analysis.xlsx", sheet="FOR_Gain"))
+rawL <- as.data.frame(read_excel("Transition_Level_Intensity_Analysis.xlsx", sheet="FOR_Loss"))
 
 # Clean and Subset Data -------------------
 
@@ -79,5 +79,5 @@ plotL <- plotL + theme(legend.position="bottom", legend.box="horizontal", legend
 # Save Outputs --------------------------
 
 # Output boxplots to a PDF file
-ggsave(plotG, file="Transition-Level-Intensity-Analysis-Mangroves-Gain.pdf", width=20, height=25, units="cm", dpi=300)
-ggsave(plotL, file="Transition-Level-Intensity-Analysis-Mangroves-Loss.pdf", width=20, height=25, units="cm", dpi=300)
+ggsave(plotG, file="Transition-Level-Intensity-Analysis-Forest-Gain.pdf", width=25, height=20, units="cm", dpi=300)
+ggsave(plotL, file="Transition-Level-Intensity-Analysis-Forest-Loss.pdf", width=25, height=20, units="cm", dpi=300)
