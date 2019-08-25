@@ -22,6 +22,7 @@ library(readxl)
 xlsxMINDR <- read_excel("Intensity_Analysis_Mindoro Island.xlsx", sheet="Interval_Level")
 xlsxMCWS  <- read_excel("Intensity_Analysis_PA_MCWS.xlsx", sheet="Interval_Level")
 xlsxMIBNP <- read_excel("Intensity_Analysis_PA_MIBNP.xlsx", sheet="Interval_Level")
+xlsxSBRN  <- read_excel("Intensity_Analysis_KBA_Siburan.xlsx", sheet="Interval_Level")
 
 # Clean and Subset Data -------------------
 
@@ -29,19 +30,22 @@ xlsxMIBNP <- read_excel("Intensity_Analysis_PA_MIBNP.xlsx", sheet="Interval_Leve
 tempMINDR <- xlsxMINDR[-c(1),] %>% write_csv("Interval_Level_Mindoro_Island.csv")
 tempMCWS  <- xlsxMCWS[-c(1),] %>% write_csv("Interval_Level_PA_MCWS.csv")
 tempMIBNP <- xlsxMIBNP[-c(1),] %>% write_csv("Interval_Level_PA_MIBNP.csv")
+tempSBRN  <- xlsxSBRN[-c(1),] %>% write_csv("Interval_Level_KBA_SBRN.csv")
 
 # And save and then read CSV file
 csvMINDR <- read.csv(file="Interval_Level_Mindoro_Island.csv", header=TRUE, sep=",")
 csvMCWS  <- read.csv(file="Interval_Level_PA_MCWS.csv", header=TRUE, sep=",")
 csvMIBNP <- read.csv(file="Interval_Level_PA_MIBNP.csv", header=TRUE, sep=",")
+csvSBRN  <- read.csv(file="Interval_Level_KBA_SBRN.csv", header=TRUE, sep=",")
 
 # Add new column with site name
 csvMINDR$Site <- c("Mindoro Island")
 csvMCWS$Site  <- c("Mt Calavite WS")
 csvMIBNP$Site <- c("Mts Iglit-Baco NP")
+csvSBRN$Site  <- c("Mt Siburan KBA")
 
 # Combine data frames
-csvINT <- rbind(csvMINDR, csvMCWS, csvMIBNP)
+csvINT <- rbind(csvMINDR, csvMCWS, csvMIBNP, csvSBRN)
 
 # Rename column names
 colnames(csvINT) <- c("Time.Interval","Obs.Change","Ann.Change","Uni.Ann.Change",
