@@ -70,5 +70,5 @@ plotINT <- plotINT  + theme(panel.grid.minor=element_blank())
 # Save Output Plots -----------------------
 
 # Output boxplots to a PDF file
-ggsave(plotINT, file="Mindoro-Interval-Level-Intensity-Analysis_v4.pdf", width=20, height=10, units="cm", dpi=300)
+ggsave(plotINT, file="Mindoro-Interval-Level-Intensity-Analysis_v5.pdf", width=20, height=20, units="cm", dpi=300)
 
