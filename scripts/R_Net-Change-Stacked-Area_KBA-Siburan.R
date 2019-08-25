@@ -7,11 +7,11 @@
 #
 # Script By:      Jose Don T De Alban
 # Date Created:   20 Nov 2017
-# Last Modified:  30 Jul 2019
+# Last Modified:  25 Aug 2019
 
 
 # Set Working Directory -----------------
-setwd("/Users/dondealban/Mindoro/mindoro_island")
+setwd("/Users/dondealban/Mindoro/kba_siburan")
 
 # Load Libraries and Data ---------------
 library(reshape2)
