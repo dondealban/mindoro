@@ -117,7 +117,7 @@ colnames(subSBRNg)  <- c(list)
 colnames(subSBRNl)  <- c(list)
 
 # 6. Combine separate Loss and Gain datasets into one dataframe
-catALL <- rbind(subMINDRg, subMINDRl, subMCWSg, subMCWSl, subMIBNPg, subMIBNPl, subSBRNg, subSBRNl)
+catALL <- rbind(subMINDRg, subMINDRl, subMCWSg, subMCWSl, subSBRNg, subSBRNl, subMIBNPg, subMIBNPl)
 
 # 7. Replace "Undefined" cells as 0 and convert ColF and ColK to numeric data types
 catALL <- transform(catALL, ColF = as.numeric(ColF), ColK = as.numeric(ColK))
@@ -137,4 +137,4 @@ plotCAT <- plotCAT  + theme(legend.position="bottom", legend.box="horizontal", l
 # Save Outputs --------------------------
 
 # Output boxplots to a PDF file
-ggsave(plotCAT, file="Category-Level-Intensity-Analysis_Mindoro_v2.pdf", width=25, height=20, units="cm", dpi=300)
+ggsave(plotCAT, file="Category-Level-Intensity-Analysis_Mindoro_v2.pdf", width=25, height=25, units="cm", dpi=300)
