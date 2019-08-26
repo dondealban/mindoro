@@ -79,5 +79,5 @@ plotL <- plotL + theme(legend.position="bottom", legend.box="horizontal", legend
 # Save Outputs --------------------------
 
 # Output boxplots to a PDF file
-ggsave(plotG, file="Transition-Level-Intensity-Analysis-Grassland-Gain.pdf", width=25, height=20, units="cm", dpi=300)
-ggsave(plotL, file="Transition-Level-Intensity-Analysis-Grassland-Loss.pdf", width=25, height=20, units="cm", dpi=300)
+ggsave(plotG, file="Transition-Level-Intensity-Analysis-Grassland-Gain_v2.pdf", width=25, height=25, units="cm", dpi=300)
+ggsave(plotL, file="Transition-Level-Intensity-Analysis-Grassland-Loss_v2.pdf", width=25, height=25, units="cm", dpi=300)
