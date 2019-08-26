@@ -26,6 +26,8 @@ dfMCWSg  <- as.data.frame(read_excel("Category_Level_Intensity_Analysis_ALL.xlsx
 dfMCWSl  <- as.data.frame(read_excel("Category_Level_Intensity_Analysis_ALL.xlsx", sheet="Loss_MCWS"))
 dfMIBNPg <- as.data.frame(read_excel("Category_Level_Intensity_Analysis_ALL.xlsx", sheet="Gain_MIBNP"))
 dfMIBNPl <- as.data.frame(read_excel("Category_Level_Intensity_Analysis_ALL.xlsx", sheet="Loss_MIBNP"))
+dfSBRNg  <- as.data.frame(read_excel("Category_Level_Intensity_Analysis_ALL.xlsx", sheet="Gain_SBRN"))
+dfSBRNl  <- as.data.frame(read_excel("Category_Level_Intensity_Analysis_ALL.xlsx", sheet="Loss_SBRN"))
 
 # Clean and Subset Data -------------------
 
@@ -36,12 +38,18 @@ subMCWSg  <- subset(dfMCWSg, select=c(1,3:11))
 subMCWSl  <- subset(dfMCWSl, select=c(1,3:11))
 subMIBNPg <- subset(dfMIBNPg, select=c(1,3:11)) 
 subMIBNPl <- subset(dfMIBNPl, select=c(1,3:11))
+subSBRNg  <- subset(dfSBRNg, select=c(1,3:11))
+subSBRNl  <- subset(dfSBRNl, select=c(1,3:11))
 
-# *Remove classes: MNG, BUA, WTR for this domain of analysis
+# *Remove classes: MNG, BUA, WTR for specific domain of analysis
 # Mts Iglit-Baco National Park
 remove.list1 <- paste(c("MNG","BUA","WTR"), collapse='|')
 subMIBNPg <- subMIBNPg %>% filter(!grepl(remove.list1, subMIBNPg$Category_Name))
 subMIBNPl <- subMIBNPl %>% filter(!grepl(remove.list1, subMIBNPl$Category_Name))
+# Mt Siburan Key Biodiversity Area
+remove.list2 <- paste(c("Undefined"))
+subSBRNg <- subSBRNg %>% filter(!grepl(remove.list2, subSBRNg[,4]))
+subSBRNl <- subSBRNl %>% filter(!grepl(remove.list2, subSBRNl[,4]))
 
 # 2. Add Change Type column
 # Mindoro Island
