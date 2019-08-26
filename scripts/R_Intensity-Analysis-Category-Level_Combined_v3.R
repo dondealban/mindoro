@@ -43,13 +43,14 @@ subSBRNl  <- subset(dfSBRNl, select=c(1,3:11))
 
 # *Remove classes: MNG, BUA, WTR for specific domain of analysis
 # Mts Iglit-Baco National Park
-remove.list1 <- paste(c("MNG","BUA","WTR"), collapse='|')
-subMIBNPg <- subMIBNPg %>% filter(!grepl(remove.list1, subMIBNPg$Category_Name))
-subMIBNPl <- subMIBNPl %>% filter(!grepl(remove.list1, subMIBNPl$Category_Name))
+remove.list <- paste(c("MNG","BUA","WTR"), collapse='|')
+subMIBNPg <- subMIBNPg %>% filter(!grepl(remove.list, subMIBNPg$Category_Name))
+subMIBNPl <- subMIBNPl %>% filter(!grepl(remove.list, subMIBNPl$Category_Name))
+
+# *Replace undefined values with 0
 # Mt Siburan Key Biodiversity Area
-remove.list2 <- paste(c("Undefined"))
-subSBRNg <- subSBRNg %>% filter(!grepl(remove.list2, subSBRNg[,4]))
-subSBRNl <- subSBRNl %>% filter(!grepl(remove.list2, subSBRNl[,4]))
+subSBRNg[subSBRNg=="Undefined"] <- 0
+subSBRNl[subSBRNl=="Undefined"] <- 0
 
 # 2. Add Change Type column
 # Mindoro Island
