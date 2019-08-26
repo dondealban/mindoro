@@ -113,9 +113,11 @@ colnames(subMCWSg)  <- c(list)
 colnames(subMCWSl)  <- c(list)
 colnames(subMIBNPg) <- c(list)
 colnames(subMIBNPl) <- c(list)
+colnames(subSBRNg)  <- c(list)
+colnames(subSBRNl)  <- c(list)
 
 # 6. Combine separate Loss and Gain datasets into one dataframe
-catALL <- rbind(subMINDRg, subMINDRl, subMCWSg, subMCWSl, subMIBNPg, subMIBNPl)
+catALL <- rbind(subMINDRg, subMINDRl, subMCWSg, subMCWSl, subMIBNPg, subMIBNPl, subSBRNg, subSBRNl)
 
 # 7. Replace "Undefined" cells as 0 and convert ColF and ColK to numeric data types
 catALL <- transform(catALL, ColF = as.numeric(ColF), ColK = as.numeric(ColK))
