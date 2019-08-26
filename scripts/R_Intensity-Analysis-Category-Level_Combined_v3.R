@@ -73,6 +73,13 @@ site1c <- rep("Mts Iglit-Baco NP", nrow(subMIBNPg))
 site2c <- rep("Mts Iglit-Baco NP", nrow(subMIBNPl))
 subMIBNPg <- cbind(subMIBNPg, type1c, site1c)
 subMIBNPl <- cbind(subMIBNPl, type2c, site2c)
+# Mt Siburan Key Biodiversity Area
+type1d <- rep("Gain", nrow(subSBRNg))
+type2d <- rep("Loss", nrow(subSBRNl))
+site1d <- rep("Mt Siburan KBA", nrow(subSBRNg))
+site2d <- rep("Mt Siburan KBA", nrow(subSBRNl))
+subSBRNg <- cbind(subSBRNg, type1d, site1d)
+subSBRNl <- cbind(subSBRNl, type2d, site2d)
 
 # 3. Reorder columns before renaming
 subMINDRg <- subMINDRg[,c(1:2,11,12,3:10)]
@@ -81,6 +88,8 @@ subMCWSg  <- subMCWSg[,c(1:2,11,12,3:10)]
 subMCWSl  <- subMCWSl[,c(1:2,11,12,3:10)]
 subMIBNPg <- subMIBNPg[,c(1:2,11,12,3:10)]
 subMIBNPl <- subMIBNPl[,c(1:2,11,12,3:10)]
+subSBRNg  <- subSBRNg[,c(1:2,11,12,3:10)]
+subSBRNl  <- subSBRNl[,c(1:2,11,12,3:10)]
 
 # 4. Change column names for easier reference
 # Note the following description of category level column names
