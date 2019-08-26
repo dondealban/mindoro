@@ -8,7 +8,7 @@
 #
 # Script By:      Jose Don T De Alban
 # Date Created:   13 Mar 2018
-# Last Modified:  17 Aug 2019
+# Last Modified:  26 Aug 2019
 
 # Set Working Directory -------------------
 setwd("/Users/dondealban/Dropbox/Research/Mindoro/intensity analysis/")
@@ -20,8 +20,8 @@ library(readxl)
 # Read Input Data -------------------------
 
 # Read transition level XLSX data file, convert to data frame, and store into variable
-rawG <- as.data.frame(read_excel("Transition_Level_Intensity_Analysis.xlsx", sheet="FOR_Gain"))
-rawL <- as.data.frame(read_excel("Transition_Level_Intensity_Analysis.xlsx", sheet="FOR_Loss"))
+rawG <- as.data.frame(read_excel("Transition_Level_Intensity_Analysis.xlsx", sheet="GRA_Gain"))
+rawL <- as.data.frame(read_excel("Transition_Level_Intensity_Analysis.xlsx", sheet="GRA_Loss"))
 
 # Clean and Subset Data -------------------
 
@@ -79,5 +79,5 @@ plotL <- plotL + theme(legend.position="bottom", legend.box="horizontal", legend
 # Save Outputs --------------------------
 
 # Output boxplots to a PDF file
-ggsave(plotG, file="Transition-Level-Intensity-Analysis-Forest-Gain.pdf", width=25, height=20, units="cm", dpi=300)
-ggsave(plotL, file="Transition-Level-Intensity-Analysis-Forest-Loss.pdf", width=25, height=20, units="cm", dpi=300)
+ggsave(plotG, file="Transition-Level-Intensity-Analysis-Grassland-Gain_v2.pdf", width=25, height=25, units="cm", dpi=300)
+ggsave(plotL, file="Transition-Level-Intensity-Analysis-Grassland-Loss_v2.pdf", width=25, height=25, units="cm", dpi=300)
