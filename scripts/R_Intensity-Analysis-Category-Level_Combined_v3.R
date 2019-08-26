@@ -137,4 +137,4 @@ plotCAT <- plotCAT  + theme(legend.position="bottom", legend.box="horizontal", l
 # Save Outputs --------------------------
 
 # Output boxplots to a PDF file
-ggsave(plotCAT, file="Category-Level-Intensity-Analysis_Mindoro.pdf", width=25, height=20, units="cm", dpi=300)
+ggsave(plotCAT, file="Category-Level-Intensity-Analysis_Mindoro_v2.pdf", width=25, height=20, units="cm", dpi=300)
