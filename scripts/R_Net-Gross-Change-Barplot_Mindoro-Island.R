@@ -32,15 +32,12 @@ imagestack <- stack(r1988,r2000,r2010,r2015)
 
 # Create Contingency Table ---------------
 min_1988_2015 <- contingencyTable(input_raster=imagestack, pixelresolution=30)
-min_1988_2015 # 
+min_1988_2015 # Checking tibble contents
 
 # Modify Cateory Names and Legend --------
-## editing the category name
+# Edit category names
 min_1988_2015$tb_legend$categoryName <- factor(c("FOR","MNG","GRA","RBS","ERK","SOV","BUA","WTR"),
                                                levels=c("FOR","MNG","GRA","RBS","ERK","SOV","BUA","WTR"))
-
-## add the color by the same order of the legend,
-## it can be the color name (eg. "black") or the HEX value (eg. #000000)
+# Add colors for categories in the same order as the legend
 min_1988_2015$tb_legend$color <- c("#246a24","#6666ff","#c6f800","#ffff66","#bcbdbc","#07d316","#ff0000","#66ccff")
-
-min_1988_2015$tb_legend
+min_1988_2015$tb_legend # Checking legend contents
