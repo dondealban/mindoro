@@ -32,7 +32,6 @@ imagestack <- stack(r1988,r2000,r2010,r2015) # Main stack
 stack_1988_2000 <- stack(r1988,r2000) # Split stacks
 stack_2000_2010 <- stack(r2000,r2010)
 stack_2010_2015 <- stack(r2010,r2015)
-stack_1988_2015 <- stack(r1988,r2015)
 
 # MAIN STACK -----------------------------
 
@@ -40,7 +39,7 @@ stack_1988_2015 <- stack(r1988,r2015)
 min_1988_2015 <- contingencyTable(input_raster=imagestack, pixelresolution=30)
 min_1988_2015 # Checking tibble contents
 
-# Modify Cateory Names and Legend --------
+# Modify Category Names and Legend -------
 # Edit category names
 min_1988_2015$tb_legend$categoryName <- factor(c("FOR","MNG","GRA","RBS","ERK","SOV","BUA","WTR"),
                                                levels=c("FOR","MNG","GRA","RBS","ERK","SOV","BUA","WTR"))
@@ -71,3 +70,15 @@ min_1988_2000 <- contingencyTable(input_raster=stack_1988_2000, pixelresolution=
 min_2000_2010 <- contingencyTable(input_raster=stack_2000_2010, pixelresolution=30)
 min_2010_2015 <- contingencyTable(input_raster=stack_2010_2015, pixelresolution=30)
 
+# Modify Category Names and Legend -------
+# Edit category names
+min_1988_2000$tb_legend$categoryName <- factor(c("FOR","MNG","GRA","RBS","ERK","SOV","BUA","WTR"),
+                                               levels=c("FOR","MNG","GRA","RBS","ERK","SOV","BUA","WTR"))
+min_2000_2010$tb_legend$categoryName <- factor(c("FOR","MNG","GRA","RBS","ERK","SOV","BUA","WTR"),
+                                               levels=c("FOR","MNG","GRA","RBS","ERK","SOV","BUA","WTR"))
+min_2010_2015$tb_legend$categoryName <- factor(c("FOR","MNG","GRA","RBS","ERK","SOV","BUA","WTR"),
+                                               levels=c("FOR","MNG","GRA","RBS","ERK","SOV","BUA","WTR"))
+# Add colors for categories in the same order as the legend
+min_1988_2000$tb_legend$color <- c("#246a24","#6666ff","#c6f800","#ffff66","#bcbdbc","#07d316","#ff0000","#66ccff")
+min_2000_2010$tb_legend$color <- c("#246a24","#6666ff","#c6f800","#ffff66","#bcbdbc","#07d316","#ff0000","#66ccff")
+min_2010_2015$tb_legend$color <- c("#246a24","#6666ff","#c6f800","#ffff66","#bcbdbc","#07d316","#ff0000","#66ccff")
