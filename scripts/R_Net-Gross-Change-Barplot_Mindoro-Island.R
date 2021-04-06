@@ -124,6 +124,7 @@ grid.arrange(
   widths = c(1,1,1),
   layout_matrix = rbind(c(1,2,3))
 )
+mergeplot <- ggarrange(plot_i1, plot_i2, plot_i3, widths=c(1,1,1), heights=c(1))
 
 # Save Output Plots ----------------------
 setwd(DirPLOT)
