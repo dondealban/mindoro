@@ -118,13 +118,11 @@ plot_i3 <- netgrossplot(dataset = min_2010_2015$lulc_Multistep,
 plot_i3 <- plot_i3 + ylim(-1000,1000)
 
 # Expose ggplot2 Layouts -----------------
-plotlayout <- lapply(list(plot1, plot2, plot3), expose_layout, FALSE, FALSE)
+plotlayout <- lapply(list(plot_i1, plot_i2, plot_i3), expose_layout, FALSE, FALSE)
 grid.arrange(
   grobs = plotlayout,
-  widths = c(1),
-  layout_matrix = rbind(c(1),
-                        c(2),
-                        c(3))
+  widths = c(1,1,1),
+  layout_matrix = rbind(c(1,2,3))
 )
 
 # Save Output Plots ----------------------
