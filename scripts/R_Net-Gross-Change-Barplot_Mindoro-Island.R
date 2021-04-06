@@ -29,9 +29,9 @@ r2010 <- raster('Mindoro_2010.tif')
 r2015 <- raster('Mindoro_2015.tif')
 # Create rasterstacks from all raster files
 imagestack <- stack(r1988,r2000,r2010,r2015) # Main stack
-stack_1988_2000 <- stack(r1988,r2000) # Split stacks
-stack_2000_2010 <- stack(r2000,r2010)
-stack_2010_2015 <- stack(r2010,r2015)
+stack_1988_2000 <- stack(r1988,r2000) # Split stack I1
+stack_2000_2010 <- stack(r2000,r2010) # Split stack I2
+stack_2010_2015 <- stack(r2010,r2015) # Split stack I3
 
 # MAIN STACK -----------------------------
 
@@ -82,3 +82,33 @@ min_2010_2015$tb_legend$categoryName <- factor(c("FOR","MNG","GRA","RBS","ERK","
 min_1988_2000$tb_legend$color <- c("#246a24","#6666ff","#c6f800","#ffff66","#bcbdbc","#07d316","#ff0000","#66ccff")
 min_2000_2010$tb_legend$color <- c("#246a24","#6666ff","#c6f800","#ffff66","#bcbdbc","#07d316","#ff0000","#66ccff")
 min_2010_2015$tb_legend$color <- c("#246a24","#6666ff","#c6f800","#ffff66","#bcbdbc","#07d316","#ff0000","#66ccff")
+
+# Generate Plots -------------------------
+# Barplot of net and gross land cover changes
+setwd(DirPLOT)
+
+# Plot I1 (1988-2000)
+plot_i1 <- netgrossplot(dataset = min_2010_2015$lulc_Multistep,
+                        legendtable = min_2010_2015$tb_legend,
+                        xlab = "Land Cover Types",
+                        ylab = bquote("Area ("~ km^2 ~")"),
+                        changesLabel = c(GC = "Gross change", NG = "Net gain", NL = "Net loss"),
+                        color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C"))
+plot_i1 <- plot_i1 + theme_bw()
+plot_i1 <- plot_i1 + theme(panel.background = element_blank())
+
+# Plot I2 (2000-2010)
+plot_i2 <- netgrossplot(dataset = min_2010_2015$lulc_Multistep,
+                        legendtable = min_2010_2015$tb_legend,
+                        xlab = "Land Cover Types",
+                        ylab = bquote("Area ("~ km^2 ~")"),
+                        changesLabel = c(GC = "Gross change", NG = "Net gain", NL = "Net loss"),
+                        color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C"))
+
+# Plot I3 (2010-2015)
+plot_i3 <- netgrossplot(dataset = min_2010_2015$lulc_Multistep,
+                        legendtable = min_2010_2015$tb_legend,
+                        xlab = "Land Cover Types",
+                        ylab = bquote("Area ("~ km^2 ~")"),
+                        changesLabel = c(GC = "Gross change", NG = "Net gain", NL = "Net loss"),
+                        color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C"))
