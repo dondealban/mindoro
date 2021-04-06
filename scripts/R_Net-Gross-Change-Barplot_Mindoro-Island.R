@@ -120,6 +120,7 @@ plot_i3 <- netgrossplot(dataset = min_2010_2015$lulc_Multistep,
                         changesLabel = c(GC = "Gross change", NG = "Net gain", NL = "Net loss"),
                         color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C"))
 plot_i3 <- plot_i3 + ylim(-1000,1000)
+plot_i3 <- plot_i3 + labs(subtitle="2010-2015")
 plot_i3 <- plot_i3 + theme(axis.title.x=element_blank())
 plot_i3 <- plot_i3 + theme(axis.text.y=element_blank(), axis.ticks.y=element_blank(), axis.title.y = element_blank())
 
