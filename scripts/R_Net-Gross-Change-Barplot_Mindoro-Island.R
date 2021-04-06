@@ -29,7 +29,7 @@ r2010 <- raster('Mindoro_2010.tif')
 r2015 <- raster('Mindoro_2015.tif')
 # Create rasterstacks from all raster files
 imagestack <- stack(r1988,r2000,r2010,r2015) # Main stack
-stack_1988_2000 <- stack(r1988,r2000)        # Split stacks
+stack_1988_2000 <- stack(r1988,r2000) # Split stacks
 stack_2000_2010 <- stack(r2000,r2010)
 stack_2010_2015 <- stack(r2010,r2015)
 stack_1988_2015 <- stack(r1988,r2015)
@@ -66,7 +66,8 @@ main_onestep   <- netgrossplot(dataset = min_1988_2015$lulc_Onestep,
 
 # SPLIT STACKS ---------------------------
 
-stack_1988_2000 <- stack(r1988,r2000)
-stack_2000_2010 <- stack(r2000,r2010)
-stack_2010_2015 <- stack(r2010,r2015)
-stack_1988_2015 <- stack(r1988,r2015)
+# Create Contingency Table ---------------
+min_1988_2000 <- contingencyTable(input_raster=stack_1988_2000, pixelresolution=30)
+min_2000_2010 <- contingencyTable(input_raster=stack_2000_2010, pixelresolution=30)
+min_2010_2015 <- contingencyTable(input_raster=stack_2010_2015, pixelresolution=30)
+
