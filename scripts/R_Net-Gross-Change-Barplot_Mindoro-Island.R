@@ -96,6 +96,7 @@ plot_i1 <- netgrossplot(dataset = min_1988_2000$lulc_Multistep,
                         changesLabel = c(GC = "Gross change", NG = "Net gain", NL = "Net loss"),
                         color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C"))
 plot_i1 <- plot_i1 + ylim(-1000,1000)
+plot_i1 <- plot_i1 + labs(subtitle="1988-2000")
 plot_i1 <- plot_i1 + theme(legend.position="none")
 plot_i1 <- plot_i1 + theme(axis.title.x=element_blank())
 
@@ -107,6 +108,7 @@ plot_i2 <- netgrossplot(dataset = min_2000_2010$lulc_Multistep,
                         changesLabel = c(GC = "Gross change", NG = "Net gain", NL = "Net loss"),
                         color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C"))
 plot_i2 <- plot_i2 + ylim(-1000,1000)
+plot_i2 <- plot_i2 + labs(title="Mindoro Island", subtitle="2000-2010")
 plot_i2 <- plot_i2 + theme(legend.position="none")
 plot_i2 <- plot_i2 + theme(axis.text.y=element_blank(), axis.ticks.y=element_blank(), axis.title.y = element_blank())
 
