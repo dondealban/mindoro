@@ -94,6 +94,7 @@ plot_i1 <- netgrossplot(dataset = min_1988_2000$lulc_Multistep,
                         ylab = bquote("Area ("~ km^2 ~")"),
                         changesLabel = c(GC = "Gross change", NG = "Net gain", NL = "Net loss"),
                         color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C"))
+plot_i1 <- plot_i1 + ylim(-1000,1000)
 plot_i1 <- plot_i1 + theme_bw()
 plot_i1 <- plot_i1 + theme(panel.background = element_blank())
 
@@ -104,6 +105,7 @@ plot_i2 <- netgrossplot(dataset = min_2000_2010$lulc_Multistep,
                         ylab = bquote("Area ("~ km^2 ~")"),
                         changesLabel = c(GC = "Gross change", NG = "Net gain", NL = "Net loss"),
                         color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C"))
+plot_i2 <- plot_i2 + ylim(-1000,1000)
 
 # Plot I3 (2010-2015)
 plot_i3 <- netgrossplot(dataset = min_2010_2015$lulc_Multistep,
@@ -112,3 +114,8 @@ plot_i3 <- netgrossplot(dataset = min_2010_2015$lulc_Multistep,
                         ylab = bquote("Area ("~ km^2 ~")"),
                         changesLabel = c(GC = "Gross change", NG = "Net gain", NL = "Net loss"),
                         color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C"))
+plot_i3 <- plot_i3 + ylim(-1000,1000)
+
+# Save Output Plots ----------------------
+setwd(DirPLOT)
+ggsave(plot_i1, file="NetGrossBarplot_Mindoro-Island.pdf", width=40, height=30, units="cm", dpi=300)
