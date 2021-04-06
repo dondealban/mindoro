@@ -94,7 +94,7 @@ plot_i1 <- netgrossplot(dataset = min_1988_2000$lulc_Multistep,
                         xlab = "Land Cover Types",
                         ylab = bquote("Area ("~ km^2 ~")"),
                         changesLabel = c(GC = "Gross change", NG = "Net gain", NL = "Net loss"),
-                        color = c(GC = "gray70", NG = "#1f78b4", NL = "#e31a1c"))
+                        color = c(GC = "gray70", NG = "#1e88e5", NL = "#d81b60"))
 plot_i1 <- plot_i1 + ylim(-1000,1000)
 plot_i1 <- plot_i1 + labs(subtitle="1988-2000")
 plot_i1 <- plot_i1 + theme(legend.position="none")
@@ -106,7 +106,7 @@ plot_i2 <- netgrossplot(dataset = min_2000_2010$lulc_Multistep,
                         xlab = "Land Cover Types",
                         ylab = bquote("Area ("~ km^2 ~")"),
                         changesLabel = c(GC = "Gross change", NG = "Net gain", NL = "Net loss"),
-                        color = c(GC = "gray70", NG = "#1f78b4", NL = "#e31a1c"))
+                        color = c(GC = "gray70", NG = "#1e88e5", NL = "#d81b60"))
 plot_i2 <- plot_i2 + ylim(-1000,1000)
 plot_i2 <- plot_i2 + labs(title="Mindoro Island", subtitle="2000-2010")
 plot_i2 <- plot_i2 + theme(legend.position="none")
@@ -118,7 +118,7 @@ plot_i3 <- netgrossplot(dataset = min_2010_2015$lulc_Multistep,
                         xlab = "Land Cover Types",
                         ylab = bquote("Area ("~ km^2 ~")"),
                         changesLabel = c(GC = "Gross change", NG = "Net gain", NL = "Net loss"),
-                        color = c(GC = "gray70", NG = "#1f78b4", NL = "#e31a1c"))
+                        color = c(GC = "gray70", NG = "#1e88e5", NL = "#d81b60"))
 plot_i3 <- plot_i3 + ylim(-1000,1000)
 plot_i3 <- plot_i3 + labs(subtitle="2010-2015")
 plot_i3 <- plot_i3 + theme(axis.title.x=element_blank())
