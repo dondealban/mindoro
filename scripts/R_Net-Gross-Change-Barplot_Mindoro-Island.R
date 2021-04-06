@@ -96,6 +96,8 @@ plot_i1 <- netgrossplot(dataset = min_1988_2000$lulc_Multistep,
                         changesLabel = c(GC = "Gross change", NG = "Net gain", NL = "Net loss"),
                         color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C"))
 plot_i1 <- plot_i1 + ylim(-1000,1000)
+plot_i1 <- plot_i1 + theme(legend.position="none", axis.title.x=element_blank())
+
 plot_i1 <- plot_i1 + theme_bw()
 plot_i1 <- plot_i1 + theme(panel.background = element_blank())
 
@@ -107,6 +109,7 @@ plot_i2 <- netgrossplot(dataset = min_2000_2010$lulc_Multistep,
                         changesLabel = c(GC = "Gross change", NG = "Net gain", NL = "Net loss"),
                         color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C"))
 plot_i2 <- plot_i2 + ylim(-1000,1000)
+plot_i2 <- plot_i2 + theme(legend.position="none") + labs(y=" ")
 
 # Plot I3 (2010-2015)
 plot_i3 <- netgrossplot(dataset = min_2010_2015$lulc_Multistep,
@@ -116,6 +119,7 @@ plot_i3 <- netgrossplot(dataset = min_2010_2015$lulc_Multistep,
                         changesLabel = c(GC = "Gross change", NG = "Net gain", NL = "Net loss"),
                         color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C"))
 plot_i3 <- plot_i3 + ylim(-1000,1000)
+plot_i3 <- plot_i3 + theme(axis.title.x=element_blank()) + labs(y=" ")
 
 # Expose ggplot2 Layouts -----------------
 plotlayout <- lapply(list(plot_i1, plot_i2, plot_i3), expose_layout, FALSE, FALSE)
