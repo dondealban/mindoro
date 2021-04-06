@@ -20,3 +20,12 @@ library(ggplot2)
 DirDATA  <- "/Users/dondealban/Desktop/mindoro/"
 DirMAIN  <- "/Users/dondealban/Dropbox/Research/mindoro/"
 DirPLOT  <- "/Users/dondealban/Dropbox/Research/mindoro/net gross barplot/"
+
+# Load Raster Files ----------------------
+setwd(DirDATA)
+r1988 <- raster('Mindoro_1988.tif')
+r2000 <- raster('Mindoro_2000.tif')
+r2010 <- raster('Mindoro_2010.tif')
+r2015 <- raster('Mindoro_2015.tif')
+
+
