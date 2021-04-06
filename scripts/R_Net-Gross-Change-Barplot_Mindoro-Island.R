@@ -88,8 +88,8 @@ min_2010_2015$tb_legend$color <- c("#246a24","#6666ff","#c6f800","#ffff66","#bcb
 setwd(DirPLOT)
 
 # Plot I1 (1988-2000)
-plot_i1 <- netgrossplot(dataset = min_2010_2015$lulc_Multistep,
-                        legendtable = min_2010_2015$tb_legend,
+plot_i1 <- netgrossplot(dataset = min_1988_2000$lulc_Multistep,
+                        legendtable = min_1988_2000$tb_legend,
                         xlab = "Land Cover Types",
                         ylab = bquote("Area ("~ km^2 ~")"),
                         changesLabel = c(GC = "Gross change", NG = "Net gain", NL = "Net loss"),
@@ -98,8 +98,8 @@ plot_i1 <- plot_i1 + theme_bw()
 plot_i1 <- plot_i1 + theme(panel.background = element_blank())
 
 # Plot I2 (2000-2010)
-plot_i2 <- netgrossplot(dataset = min_2010_2015$lulc_Multistep,
-                        legendtable = min_2010_2015$tb_legend,
+plot_i2 <- netgrossplot(dataset = min_2000_2010$lulc_Multistep,
+                        legendtable = min_2000_2010$tb_legend,
                         xlab = "Land Cover Types",
                         ylab = bquote("Area ("~ km^2 ~")"),
                         changesLabel = c(GC = "Gross change", NG = "Net gain", NL = "Net loss"),
