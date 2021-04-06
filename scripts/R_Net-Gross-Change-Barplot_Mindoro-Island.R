@@ -15,6 +15,7 @@ library(raster)
 library(sp)
 library(OpenLand)
 library(ggplot2)
+library(egg)
 
 # Set Working Directories ----------------
 DirDATA  <- "/Users/dondealban/Desktop/mindoro/"
@@ -115,6 +116,16 @@ plot_i3 <- netgrossplot(dataset = min_2010_2015$lulc_Multistep,
                         changesLabel = c(GC = "Gross change", NG = "Net gain", NL = "Net loss"),
                         color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C"))
 plot_i3 <- plot_i3 + ylim(-1000,1000)
+
+# Expose ggplot2 Layouts -----------------
+plotlayout <- lapply(list(plot1, plot2, plot3), expose_layout, FALSE, FALSE)
+grid.arrange(
+  grobs = plotlayout,
+  widths = c(1),
+  layout_matrix = rbind(c(1),
+                        c(2),
+                        c(3))
+)
 
 # Save Output Plots ----------------------
 setwd(DirPLOT)
