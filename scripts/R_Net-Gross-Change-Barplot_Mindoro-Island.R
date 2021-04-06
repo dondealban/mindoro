@@ -23,9 +23,24 @@ DirPLOT  <- "/Users/dondealban/Dropbox/Research/mindoro/net gross barplot/"
 
 # Load Raster Files ----------------------
 setwd(DirDATA)
-r1988 <- raster('Mindoro_1988.tif')
+r1988 <- raster('Mindoro_1988.tif') # Note: raster files in EPSG:32651; 0s treated as NAs
 r2000 <- raster('Mindoro_2000.tif')
 r2010 <- raster('Mindoro_2010.tif')
 r2015 <- raster('Mindoro_2015.tif')
+# Create rasterstack from all raster files
+imagestack <- stack(r1988,r2000,r2010,r2015)
 
+# Create Contingency Table ---------------
+min_1988_2015 <- contingencyTable(input_raster=imagestack, pixelresolution=30)
+min_1988_2015 # 
 
+# Modify Cateory Names and Legend --------
+## editing the category name
+min_1988_2015$tb_legend$categoryName <- factor(c("FOR","MNG","GRA","RBS","ERK","SOV","BUA","WTR"),
+                                               levels=c("FOR","MNG","GRA","RBS","ERK","SOV","BUA","WTR"))
+
+## add the color by the same order of the legend,
+## it can be the color name (eg. "black") or the HEX value (eg. #000000)
+min_1988_2015$tb_legend$color <- c("#246a24","#6666ff","#c6f800","#ffff66","#bcbdbc","#07d316","#ff0000","#66ccff")
+
+min_1988_2015$tb_legend
