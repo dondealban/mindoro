@@ -16,3 +16,7 @@ library(sp)
 library(OpenLand)
 library(ggplot2)
 
+# Set Working Directories ----------------
+DirDATA  <- "/Users/dondealban/Desktop/mindoro/"
+DirMAIN  <- "/Users/dondealban/Dropbox/Research/mindoro/"
+DirPLOT  <- "/Users/dondealban/Dropbox/Research/mindoro/net gross barplot/"
