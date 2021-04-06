@@ -30,6 +30,8 @@ r2015 <- raster('Mindoro_2015.tif')
 # Create rasterstack from all raster files
 imagestack <- stack(r1988,r2000,r2010,r2015)
 
+# MAIN STACK
+
 # Create Contingency Table ---------------
 min_1988_2015 <- contingencyTable(input_raster=imagestack, pixelresolution=30)
 min_1988_2015 # Checking tibble contents
@@ -41,3 +43,20 @@ min_1988_2015$tb_legend$categoryName <- factor(c("FOR","MNG","GRA","RBS","ERK","
 # Add colors for categories in the same order as the legend
 min_1988_2015$tb_legend$color <- c("#246a24","#6666ff","#c6f800","#ffff66","#bcbdbc","#07d316","#ff0000","#66ccff")
 min_1988_2015$tb_legend # Checking legend contents
+
+# Generate Plots -------------------------
+# Barplot of net and gross land cover changes
+setwd(DirPLOT)
+main_multistep <- netgrossplot(dataset = min_1988_2015$lulc_Multistep,
+                               legendtable = min_1988_2015$tb_legend,
+                               xlab = "Land Cover Types",
+                               ylab = bquote("Area ("~ km^2 ~")"),
+                               changesLabel = c(GC = "Gross change", NG = "Net gain", NL = "Net loss"),
+                               color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C"))
+main_onestep   <- netgrossplot(dataset = min_1988_2015$lulc_Onestep,
+                               legendtable = min_1988_2015$tb_legend,
+                               xlab = "Land Cover Types",
+                               ylab = bquote("Area ("~ km^2 ~")"),
+                               changesLabel = c(GC = "Gross change", NG = "Net gain", NL = "Net loss"),
+                               color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C"))
+
