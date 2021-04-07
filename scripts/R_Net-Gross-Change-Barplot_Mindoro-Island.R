@@ -217,6 +217,41 @@ cplot_i3 <- cplot_i3 + labs(subtitle="2010-2015")
 cplot_i3 <- cplot_i3 + theme(axis.title.x=element_blank())
 cplot_i3 <- cplot_i3 + theme(axis.text.y=element_blank(), axis.ticks.y=element_blank(), axis.title.y = element_blank())
 
+# Mt Siburan Key Biodiversity Area
+# Plot I1 (1988-2000)
+splot_i1 <- netgrossplot(dataset = s_1988_2000$lulc_Multistep,
+                         legendtable = s_1988_2000$tb_legend,
+                         xlab = "Land Cover Types",
+                         ylab = bquote("Area ("~ km^2 ~")"),
+                         changesLabel = c(GC = "Gross change", NG = "Net gain", NL = "Net loss"),
+                         color = c(GC = "gray70", NG = "#1e88e5", NL = "#d81b60"))
+splot_i1 <- splot_i1 + ylim(-25,25)
+splot_i1 <- splot_i1 + labs(subtitle="1988-2000")
+splot_i1 <- splot_i1 + theme(legend.position="none")
+splot_i1 <- splot_i1 + theme(axis.title.x=element_blank())
+# Plot I2 (2000-2010)
+splot_i2 <- netgrossplot(dataset = s_2000_2010$lulc_Multistep,
+                         legendtable = s_2000_2010$tb_legend,
+                         xlab = "Land Cover Types",
+                         ylab = bquote("Area ("~ km^2 ~")"),
+                         changesLabel = c(GC = "Gross change", NG = "Net gain", NL = "Net loss"),
+                         color = c(GC = "gray70", NG = "#1e88e5", NL = "#d81b60"))
+splot_i2 <- splot_i2 + ylim(-25,25)
+splot_i2 <- splot_i2 + labs(title="Mt Siburan Key Biodiversity Area", subtitle="2000-2010")
+splot_i2 <- splot_i2 + theme(legend.position="none")
+splot_i2 <- splot_i2 + theme(axis.text.y=element_blank(), axis.ticks.y=element_blank(), axis.title.y = element_blank())
+# Plot I3 (2010-2015)
+splot_i3 <- netgrossplot(dataset = s_2010_2015$lulc_Multistep,
+                         legendtable = s_2010_2015$tb_legend,
+                         xlab = "Land Cover Types",
+                         ylab = bquote("Area ("~ km^2 ~")"),
+                         changesLabel = c(GC = "Gross change", NG = "Net gain", NL = "Net loss"),
+                         color = c(GC = "gray70", NG = "#1e88e5", NL = "#d81b60"))
+splot_i3 <- splot_i3 + ylim(-25,25)
+splot_i3 <- splot_i3 + labs(subtitle="2010-2015")
+splot_i3 <- splot_i3 + theme(axis.title.x=element_blank())
+splot_i3 <- splot_i3 + theme(axis.text.y=element_blank(), axis.ticks.y=element_blank(), axis.title.y = element_blank())
+
 # Expose ggplot2 Layouts -----------------
 plotlayout_m <- lapply(list(mplot_i1, mplot_i2, mplot_i3), expose_layout, FALSE, FALSE) # Mindoro Island
 grid.arrange(
@@ -236,4 +271,5 @@ mergeplot_c <- ggarrange(cplot_i1, cplot_i2, cplot_i3, widths=c(1,1,1), heights=
 
 # Save Output Plots ----------------------
 setwd(DirPLOT)
-ggsave(mergeplot, file="NetGrossBarplot_Mindoro-Island.pdf", width=30, height=10, units="cm", dpi=300)
+ggsave(mergeplot_m, file="NetGrossBarplot_Mindoro-Island.pdf", width=30, height=10, units="cm", dpi=300)
+ggsave(mergeplot_c, file="NetGrossBarplot_Calavite.pdf", width=30, height=10, units="cm", dpi=300)
