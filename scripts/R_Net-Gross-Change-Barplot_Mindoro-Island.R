@@ -56,6 +56,16 @@ s_1988_2000 <- stack(s1988,s2000) # Split stack I1
 s_2000_2010 <- stack(s2000,s2010) # Split stack I2
 s_2010_2015 <- stack(s2010,s2015) # Split stack I3
 
+# Mts Iglit-Baco National Park
+b1988 <- raster('MIBNP_1988.tif') # Note: raster files in EPSG:32651; 0s treated as NAs
+b2000 <- raster('MIBNP_2000.tif')
+b2010 <- raster('MIBNP_2010.tif')
+b2015 <- raster('MIBNP_2015.tif')
+# Create rasterstacks from all raster files
+b_1988_2000 <- stack(b1988,b2000) # Split stack I1
+b_2000_2010 <- stack(b2000,b2010) # Split stack I2
+b_2010_2015 <- stack(b2010,b2015) # Split stack I3
+
 # MAIN STACK -----------------------------
 
 # Create Contingency Table ---------------
