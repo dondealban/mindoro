@@ -41,6 +41,20 @@ c1988 <- raster('MCWS_1988.tif') # Note: raster files in EPSG:32651; 0s treated 
 c2000 <- raster('MCWS_2000.tif')
 c2010 <- raster('MCWS_2010.tif')
 c2015 <- raster('MCWS_2015.tif')
+# Create rasterstacks from all raster files
+c_1988_2000 <- stack(c1988,c2000) # Split stack I1
+c_2000_2010 <- stack(c2000,c2010) # Split stack I2
+c_2010_2015 <- stack(c2010,c2015) # Split stack I3
+
+# Mt Siburan Key Biodiversity Area
+s1988 <- raster('Siburan_1988.tif') # Note: raster files in EPSG:32651; 0s treated as NAs
+s2000 <- raster('Siburan_2000.tif')
+s2010 <- raster('Siburan_2010.tif')
+s2015 <- raster('Siburan_2015.tif')
+# Create rasterstacks from all raster files
+s_1988_2000 <- stack(s1988,s2000) # Split stack I1
+s_2000_2010 <- stack(s2000,s2010) # Split stack I2
+s_2010_2015 <- stack(s2010,s2015) # Split stack I3
 
 # MAIN STACK -----------------------------
 
