@@ -99,9 +99,18 @@ main_onestep   <- netgrossplot(dataset = min_1988_2015$lulc_Onestep,
 # SPLIT STACKS ---------------------------
 
 # Create Contingency Table ---------------
-min_1988_2000 <- contingencyTable(input_raster=stack_1988_2000, pixelresolution=30)
+min_1988_2000 <- contingencyTable(input_raster=stack_1988_2000, pixelresolution=30) # Mindoro Island
 min_2000_2010 <- contingencyTable(input_raster=stack_2000_2010, pixelresolution=30)
 min_2010_2015 <- contingencyTable(input_raster=stack_2010_2015, pixelresolution=30)
+c_1988_2000 <- contingencyTable(input_raster=c_1988_2000, pixelresolution=30)       # Mt Calavite Wildlife Sanctuary
+c_2000_2010 <- contingencyTable(input_raster=c_2000_2010, pixelresolution=30)
+c_2010_2015 <- contingencyTable(input_raster=c_2010_2015, pixelresolution=30)
+s_1988_2000 <- contingencyTable(input_raster=s_1988_2000, pixelresolution=30)       # Mt Siburan Key Biodiversity Area
+s_2000_2010 <- contingencyTable(input_raster=s_2000_2010, pixelresolution=30)
+s_2010_2015 <- contingencyTable(input_raster=s_2010_2015, pixelresolution=30)
+b_1988_2000 <- contingencyTable(input_raster=b_1988_2000, pixelresolution=30)       # Mts Iglit-Baco National Park
+b_2000_2010 <- contingencyTable(input_raster=b_2000_2010, pixelresolution=30)
+b_2010_2015 <- contingencyTable(input_raster=b_2010_2015, pixelresolution=30)
 
 # Modify Category Names and Legend -------
 # Edit category names
