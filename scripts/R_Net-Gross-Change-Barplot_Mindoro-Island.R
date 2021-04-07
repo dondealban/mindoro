@@ -209,13 +209,21 @@ cplot_i3 <- cplot_i3 + theme(axis.title.x=element_blank())
 cplot_i3 <- cplot_i3 + theme(axis.text.y=element_blank(), axis.ticks.y=element_blank(), axis.title.y = element_blank())
 
 # Expose ggplot2 Layouts -----------------
-plotlayout <- lapply(list(mplot_i1, mplot_i2, mplot_i3), expose_layout, FALSE, FALSE)
+plotlayout_m <- lapply(list(mplot_i1, mplot_i2, mplot_i3), expose_layout, FALSE, FALSE) # Mindoro Island
 grid.arrange(
-  grobs = plotlayout,
+  grobs = plotlayout_m,
   widths = c(1,1,1),
   layout_matrix = rbind(c(1,2,3))
 )
-mergeplot <- ggarrange(mplot_i1, mplot_i2, mplot_i3, widths=c(1,1,1), heights=c(1))
+mergeplot_m <- ggarrange(mplot_i1, mplot_i2, mplot_i3, widths=c(1,1,1), heights=c(1))
+
+plotlayout_c <- lapply(list(cplot_i1, cplot_i2, cplot_i3), expose_layout, FALSE, FALSE) # Mt Calavite Wildlife Sanctuary
+grid.arrange(
+  grobs = plotlayout_c,
+  widths = c(1,1,1),
+  layout_matrix = rbind(c(1,2,3))
+)
+mergeplot_c <- ggarrange(cplot_i1, cplot_i2, cplot_i3, widths=c(1,1,1), heights=c(1))
 
 # Save Output Plots ----------------------
 setwd(DirPLOT)
