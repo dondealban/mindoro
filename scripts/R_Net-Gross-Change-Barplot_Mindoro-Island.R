@@ -120,59 +120,102 @@ min_2000_2010$tb_legend$categoryName <- factor(c("FOR","MNG","GRA","RBS","ERK","
                                                levels=c("FOR","MNG","GRA","RBS","ERK","SOV","BUA","WTR"))
 min_2010_2015$tb_legend$categoryName <- factor(c("FOR","MNG","GRA","RBS","ERK","SOV","BUA","WTR"),
                                                levels=c("FOR","MNG","GRA","RBS","ERK","SOV","BUA","WTR"))
+c_1988_2000$tb_legend$categoryName <- factor(c("FOR","MNG","GRA","RBS","ERK","SOV","BUA","WTR"),
+                                               levels=c("FOR","MNG","GRA","RBS","ERK","SOV","BUA","WTR"))
+c_2000_2010$tb_legend$categoryName <- factor(c("FOR","MNG","GRA","RBS","ERK","SOV","BUA","WTR"),
+                                               levels=c("FOR","MNG","GRA","RBS","ERK","SOV","BUA","WTR"))
+c_2010_2015$tb_legend$categoryName <- factor(c("FOR","MNG","GRA","RBS","ERK","SOV","BUA","WTR"),
+                                               levels=c("FOR","MNG","GRA","RBS","ERK","SOV","BUA","WTR"))
 # Add colors for categories in the same order as the legend
 min_1988_2000$tb_legend$color <- c("#246a24","#6666ff","#c6f800","#ffff66","#bcbdbc","#07d316","#ff0000","#66ccff")
 min_2000_2010$tb_legend$color <- c("#246a24","#6666ff","#c6f800","#ffff66","#bcbdbc","#07d316","#ff0000","#66ccff")
 min_2010_2015$tb_legend$color <- c("#246a24","#6666ff","#c6f800","#ffff66","#bcbdbc","#07d316","#ff0000","#66ccff")
+c_1988_2000$tb_legend$color <- c("#246a24","#6666ff","#c6f800","#ffff66","#bcbdbc","#07d316","#ff0000","#66ccff")
+c_2000_2010$tb_legend$color <- c("#246a24","#6666ff","#c6f800","#ffff66","#bcbdbc","#07d316","#ff0000","#66ccff")
+c_2010_2015$tb_legend$color <- c("#246a24","#6666ff","#c6f800","#ffff66","#bcbdbc","#07d316","#ff0000","#66ccff")
 
 # Generate Plots -------------------------
 # Barplot of net and gross land cover changes
 setwd(DirPLOT)
 
+# Mindoro Island
 # Plot I1 (1988-2000)
-plot_i1 <- netgrossplot(dataset = min_1988_2000$lulc_Multistep,
+mplot_i1 <- netgrossplot(dataset = min_1988_2000$lulc_Multistep,
                         legendtable = min_1988_2000$tb_legend,
                         xlab = "Land Cover Types",
                         ylab = bquote("Area ("~ km^2 ~")"),
                         changesLabel = c(GC = "Gross change", NG = "Net gain", NL = "Net loss"),
                         color = c(GC = "gray70", NG = "#1e88e5", NL = "#d81b60"))
-plot_i1 <- plot_i1 + ylim(-1000,1000)
-plot_i1 <- plot_i1 + labs(subtitle="1988-2000")
-plot_i1 <- plot_i1 + theme(legend.position="none")
-plot_i1 <- plot_i1 + theme(axis.title.x=element_blank())
-
+mplot_i1 <- mplot_i1 + ylim(-1000,1000)
+mplot_i1 <- mplot_i1 + labs(subtitle="1988-2000")
+mplot_i1 <- mplot_i1 + theme(legend.position="none")
+mplot_i1 <- mplot_i1 + theme(axis.title.x=element_blank())
 # Plot I2 (2000-2010)
-plot_i2 <- netgrossplot(dataset = min_2000_2010$lulc_Multistep,
+mplot_i2 <- netgrossplot(dataset = min_2000_2010$lulc_Multistep,
                         legendtable = min_2000_2010$tb_legend,
                         xlab = "Land Cover Types",
                         ylab = bquote("Area ("~ km^2 ~")"),
                         changesLabel = c(GC = "Gross change", NG = "Net gain", NL = "Net loss"),
                         color = c(GC = "gray70", NG = "#1e88e5", NL = "#d81b60"))
-plot_i2 <- plot_i2 + ylim(-1000,1000)
-plot_i2 <- plot_i2 + labs(title="Mindoro Island", subtitle="2000-2010")
-plot_i2 <- plot_i2 + theme(legend.position="none")
-plot_i2 <- plot_i2 + theme(axis.text.y=element_blank(), axis.ticks.y=element_blank(), axis.title.y = element_blank())
-
+mplot_i2 <- mplot_i2 + ylim(-1000,1000)
+mplot_i2 <- mplot_i2 + labs(title="Mindoro Island", subtitle="2000-2010")
+mplot_i2 <- mplot_i2 + theme(legend.position="none")
+mplot_i2 <- mplot_i2 + theme(axis.text.y=element_blank(), axis.ticks.y=element_blank(), axis.title.y = element_blank())
 # Plot I3 (2010-2015)
-plot_i3 <- netgrossplot(dataset = min_2010_2015$lulc_Multistep,
+mplot_i3 <- netgrossplot(dataset = min_2010_2015$lulc_Multistep,
                         legendtable = min_2010_2015$tb_legend,
                         xlab = "Land Cover Types",
                         ylab = bquote("Area ("~ km^2 ~")"),
                         changesLabel = c(GC = "Gross change", NG = "Net gain", NL = "Net loss"),
                         color = c(GC = "gray70", NG = "#1e88e5", NL = "#d81b60"))
-plot_i3 <- plot_i3 + ylim(-1000,1000)
-plot_i3 <- plot_i3 + labs(subtitle="2010-2015")
-plot_i3 <- plot_i3 + theme(axis.title.x=element_blank())
-plot_i3 <- plot_i3 + theme(axis.text.y=element_blank(), axis.ticks.y=element_blank(), axis.title.y = element_blank())
+mplot_i3 <- mplot_i3 + ylim(-1000,1000)
+mplot_i3 <- mplot_i3 + labs(subtitle="2010-2015")
+mplot_i3 <- mplot_i3 + theme(axis.title.x=element_blank())
+mplot_i3 <- mplot_i3 + theme(axis.text.y=element_blank(), axis.ticks.y=element_blank(), axis.title.y = element_blank())
+
+# Mt Calavite Wildlife Sanctuary
+# Plot I1 (1988-2000)
+cplot_i1 <- netgrossplot(dataset = c_1988_2000$lulc_Multistep,
+                         legendtable = c_1988_2000$tb_legend,
+                         xlab = "Land Cover Types",
+                         ylab = bquote("Area ("~ km^2 ~")"),
+                         changesLabel = c(GC = "Gross change", NG = "Net gain", NL = "Net loss"),
+                         color = c(GC = "gray70", NG = "#1e88e5", NL = "#d81b60"))
+cplot_i1 <- cplot_i1 + ylim(-25,25)
+cplot_i1 <- cplot_i1 + labs(subtitle="1988-2000")
+cplot_i1 <- cplot_i1 + theme(legend.position="none")
+cplot_i1 <- cplot_i1 + theme(axis.title.x=element_blank())
+# Plot I2 (2000-2010)
+cplot_i2 <- netgrossplot(dataset = c_2000_2010$lulc_Multistep,
+                         legendtable = c_2000_2010$tb_legend,
+                         xlab = "Land Cover Types",
+                         ylab = bquote("Area ("~ km^2 ~")"),
+                         changesLabel = c(GC = "Gross change", NG = "Net gain", NL = "Net loss"),
+                         color = c(GC = "gray70", NG = "#1e88e5", NL = "#d81b60"))
+cplot_i2 <- cplot_i2 + ylim(-25,25)
+cplot_i2 <- cplot_i2 + labs(title="Mt Calavite Wildlife Sanctuary", subtitle="2000-2010")
+cplot_i2 <- cplot_i2 + theme(legend.position="none")
+cplot_i2 <- cplot_i2 + theme(axis.text.y=element_blank(), axis.ticks.y=element_blank(), axis.title.y = element_blank())
+# Plot I3 (2010-2015)
+cplot_i3 <- netgrossplot(dataset = c_2010_2015$lulc_Multistep,
+                         legendtable = c_2010_2015$tb_legend,
+                         xlab = "Land Cover Types",
+                         ylab = bquote("Area ("~ km^2 ~")"),
+                         changesLabel = c(GC = "Gross change", NG = "Net gain", NL = "Net loss"),
+                         color = c(GC = "gray70", NG = "#1e88e5", NL = "#d81b60"))
+cplot_i3 <- cplot_i3 + ylim(-25,25)
+cplot_i3 <- cplot_i3 + labs(subtitle="2010-2015")
+cplot_i3 <- cplot_i3 + theme(axis.title.x=element_blank())
+cplot_i3 <- cplot_i3 + theme(axis.text.y=element_blank(), axis.ticks.y=element_blank(), axis.title.y = element_blank())
 
 # Expose ggplot2 Layouts -----------------
-plotlayout <- lapply(list(plot_i1, plot_i2, plot_i3), expose_layout, FALSE, FALSE)
+plotlayout <- lapply(list(mplot_i1, mplot_i2, mplot_i3), expose_layout, FALSE, FALSE)
 grid.arrange(
   grobs = plotlayout,
   widths = c(1,1,1),
   layout_matrix = rbind(c(1,2,3))
 )
-mergeplot <- ggarrange(plot_i1, plot_i2, plot_i3, widths=c(1,1,1), heights=c(1))
+mergeplot <- ggarrange(mplot_i1, mplot_i2, mplot_i3, widths=c(1,1,1), heights=c(1))
 
 # Save Output Plots ----------------------
 setwd(DirPLOT)
