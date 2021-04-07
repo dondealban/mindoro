@@ -24,6 +24,8 @@ DirPLOT  <- "/Users/dondealban/Dropbox/Research/mindoro/net gross barplot/"
 
 # Load Raster Files ----------------------
 setwd(DirDATA)
+
+# Mindoro Island
 r1988 <- raster('Mindoro_1988.tif') # Note: raster files in EPSG:32651; 0s treated as NAs
 r2000 <- raster('Mindoro_2000.tif')
 r2010 <- raster('Mindoro_2010.tif')
@@ -33,6 +35,12 @@ imagestack <- stack(r1988,r2000,r2010,r2015) # Main stack
 stack_1988_2000 <- stack(r1988,r2000) # Split stack I1
 stack_2000_2010 <- stack(r2000,r2010) # Split stack I2
 stack_2010_2015 <- stack(r2010,r2015) # Split stack I3
+
+# Mt Calavite Wildlife Sanctuary
+c1988 <- raster('MCWS_1988.tif') # Note: raster files in EPSG:32651; 0s treated as NAs
+c2000 <- raster('MCWS_2000.tif')
+c2010 <- raster('MCWS_2010.tif')
+c2015 <- raster('MCWS_2015.tif')
 
 # MAIN STACK -----------------------------
 
