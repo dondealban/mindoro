@@ -10,10 +10,11 @@
 
 
 # Set Working Directories ---------------
-Dir1 <- "/Users/dondealban/Dropbox/Research/mindoro/stacked area/mindoro_island"
-Dir2 <- "/Users/dondealban/Dropbox/Research/mindoro/stacked area/pa_mcws"
-Dir3 <- "/Users/dondealban/Dropbox/Research/mindoro/stacked area/kba_siburan"
-Dir4 <- "/Users/dondealban/Dropbox/Research/mindoro/stacked area/pa_mibnp"
+Dir1    <- "/Users/dondealban/Dropbox/Research/mindoro/stacked area/mindoro_island/"
+Dir2    <- "/Users/dondealban/Dropbox/Research/mindoro/stacked area/pa_mcws/"
+Dir3    <- "/Users/dondealban/Dropbox/Research/mindoro/stacked area/kba_siburan/"
+Dir4    <- "/Users/dondealban/Dropbox/Research/mindoro/stacked area/pa_mibnp/"
+DirMAIN <- "/Users/dondealban/Dropbox/Research/mindoro/stacked area/"
 
 # Load Libraries and Data ---------------
 library(reshape2)
@@ -28,8 +29,9 @@ readdata <- function(filename) {
   return(vec)
 }
 
-# MINDORO ISLAND
+# Generate Study Area Plots -------------
 
+# MINDORO ISLAND
 # Read csv files in the directory and store as a list
 setwd(Dir1)
 filenames1 <- list.files()
@@ -64,7 +66,6 @@ plot1 <- plot1 + theme(axis.title=element_text(size=13), axis.text=element_text(
 plot1 <- plot1 + theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank())
 
 # MT CALAVITE WILDLIFE SANCTUARY
-
 # Read csv files in the directory and store as a list
 setwd(Dir2)
 filenames2 <- list.files()
@@ -99,7 +100,6 @@ plot2 <- plot2 + theme(axis.title=element_text(size=13), axis.text=element_text(
 plot2 <- plot2 + theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank())
 
 # MT SIBURAN KEY BIODIVERSITY AREA
-
 # Read csv files in the directory and store as a list
 setwd(Dir3)
 filenames3 <- list.files()
@@ -152,7 +152,6 @@ plot3 <- plot3 + theme(axis.title=element_text(size=13), axis.text=element_text(
 plot3 <- plot3 + theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank())
 
 # MTS IGLIT-BACO NATIONAL PARK
-
 # Read csv files in the directory and store as a list
 setwd(Dir4)
 filenames4 <- list.files()
@@ -201,5 +200,14 @@ plot4 <- plot4 + theme(legend.text=element_text(size=13))
 plot4 <- plot4 + theme(axis.title=element_text(size=13), axis.text=element_text(size=11))
 plot4 <- plot4 + theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank())
 
+# Expose ggplot2 Layouts -----------------
+plotlayout <- lapply(list(plot1, plot2, plot3, plot4), expose_layout, FALSE, FALSE)
+grid.arrange(
+  grobs = plotlayout,
+  widths = c(1,1),
+  layout_matrix = rbind(c(1,2),
+                        c(3,4))
+)
+mergeplot <- ggarrange(plot1, plot2, plot3, plot4, widths=c(1,1), heights=c(1,1))
 
 ggsave(plot, file="StackedArea_Mindoro-Island_v2.pdf", width=16, height=15, units="cm", dpi=300)
