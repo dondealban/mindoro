@@ -125,7 +125,7 @@ catALL <- transform(catALL, ColF = as.numeric(ColF), ColK = as.numeric(ColK))
 
 # Plot 1: Gain and Loss Intensities only
 plotCAT <- ggplot() + geom_bar(data=catALL, aes(x=ColB, y=ColF, fill=ColC), stat="identity", position=position_dodge())
-plotCAT <- plotCAT  + geom_hline(data=catALL, aes(yintercept=ColG, colour="#000000"), linetype="dashed") # Uniform line
+plotCAT <- plotCAT  + geom_hline(data=catALL, aes(yintercept=ColG, colour="#000000"), linetype="dashed", size=0.8) # Uniform line
 plotCAT <- plotCAT  + facet_grid(ColD ~ ColA, scales="free_y")
 plotCAT <- plotCAT  + labs(x="Category", y="Category Intensity (% of Category)")
 plotCAT <- plotCAT  + scale_fill_manual(values=c("#8acd66","#b43507"), labels=c("Gain Intensity","Loss Intensity"))
