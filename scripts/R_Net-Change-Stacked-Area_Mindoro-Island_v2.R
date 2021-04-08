@@ -11,20 +11,15 @@
 
 # Set Working Directories ---------------
 Dir1 <- "/Users/dondealban/Dropbox/Research/mindoro/stacked area/mindoro_island"
-Dir1 <- "/Users/dondealban/Dropbox/Research/mindoro/stacked area/mindoro_island"
-Dir3 <- "/Users/dondealban/Dropbox/Research/mindoro/stacked area/mindoro_island"
-Dir4 <- "/Users/dondealban/Dropbox/Research/mindoro/stacked area/mindoro_island"
-
-setwd("/Users/dondealban/Dropbox/Research/mindoro/stacked area/mindoro_island")
+Dir2 <- "/Users/dondealban/Dropbox/Research/mindoro/stacked area/pa_mcws"
+Dir3 <- "/Users/dondealban/Dropbox/Research/mindoro/stacked area/kba_siburan"
+Dir4 <- "/Users/dondealban/Dropbox/Research/mindoro/stacked area/pa_mibnp"
 
 # Load Libraries and Data ---------------
 library(reshape2)
 library(tidyverse)
 
-# Read csv files in the directory and store as a list
-filenames <- list.files()
-
-# Function to read data
+# Function to Read Data Files -----------
 readdata <- function(filename) {
   df <- read.csv(filename, sep="\t")
   vec <- df[,3]           # Read column with percentage values
@@ -32,36 +27,39 @@ readdata <- function(filename) {
   return(vec)
 }
 
-# Combine as class codes and percentage values in a matrix
-temp <- do.call(rbind, lapply(filenames, readdata))
-colnames(temp) <- c("1","2","3","4","5","6","7","8")
+# MINDORO ISLAND
 
-# Add years as another column
-row.names(temp) <- c("1988","2000","2010","2015")
+# Read csv files in the directory and store as a list
+setwd(Dir1)
+filenames1 <- list.files()
+
+# Combine as class codes and percentage values in a matrix
+temp1 <- do.call(rbind, lapply(filenames1, readdata))
+colnames(temp1) <- c("1","2","3","4","5","6","7","8")
+row.names(temp1) <- c("1988","2000","2010","2015") # Add years as another column
 
 # Convert wide format data frame into long format data frame
-data <- melt(temp, id.vars="years", variable.name="class", value.name="percentage")
-colnames(data) <- c("Years","Class","Percentage")
+data1 <- melt(temp1, id.vars="years", variable.name="class", value.name="percentage")
+colnames(data1) <- c("Years","Class","Percentage")
 
-# Create Stacked Area Graphs ------------
-
-plot <- ggplot() + geom_area(aes(x=Years, y=Percentage, fill=factor(Class,
-                   labels=c("Forest",
-                            "Mangrove",
-                            "Grassland",
-                            "Rice Paddy / Bare Soil",
-                            "Exposed Rock",
-                            "Shrub / Other Vegetation",
-                            "Built-up Area",
-                            "Water Body"))), 
-                   data=data)
-plot <- plot + labs(x="Year", y="Percentage of Landscape", fill="Land Cover Category")
-plot <- plot + scale_fill_manual(values=c("#246a24","#6666ff","#c6f800","#ffff66","#bcbdbc","#07d316","#ff0000","#66ccff"))
-plot <- plot + scale_x_continuous(breaks=c(1988,2000,2010,2015))
-plot <- plot + theme_bw()
-plot <- plot + theme(legend.position="bottom", legend.box="horizontal", legend.title = element_blank())
-plot <- plot + theme(legend.text=element_text(size=13))
-plot <- plot + theme(axis.title=element_text(size=13), axis.text=element_text(size=11))
-plot <- plot + theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank())
+# Create stacked area plot
+plot1 <- ggplot() + geom_area(aes(x=Years, y=Percentage, fill=factor(Class,
+                    labels=c("Forest",
+                             "Mangrove",
+                             "Grassland",
+                             "Rice Paddy / Bare Soil",
+                             "Exposed Rock",
+                             "Shrub / Other Vegetation",
+                             "Built-up Area",
+                             "Water Body"))), 
+                    data=data1)
+plot1 <- plot1 + labs(x="Year", y="Percentage of Landscape", fill="Land Cover Category")
+plot1 <- plot1 + scale_fill_manual(values=c("#246a24","#6666ff","#c6f800","#ffff66","#bcbdbc","#07d316","#ff0000","#66ccff"))
+plot1 <- plot1 + scale_x_continuous(breaks=c(1988,2000,2010,2015))
+plot1 <- plot1 + theme_bw()
+plot1 <- plot1 + theme(legend.position="bottom", legend.box="horizontal", legend.title = element_blank())
+plot1 <- plot1 + theme(legend.text=element_text(size=13))
+plot1 <- plot1 + theme(axis.title=element_text(size=13), axis.text=element_text(size=11))
+plot1 <- plot1 + theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank())
 
 ggsave(plot, file="StackedArea_Mindoro-Island_v2.pdf", width=16, height=15, units="cm", dpi=300)
