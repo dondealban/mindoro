@@ -65,7 +65,8 @@ plotINT <- plotINT  + scale_fill_manual(values=c("#808080"), name="", labels = c
 plotINT <- plotINT  + scale_colour_manual(values=c("#000000"), labels=c("Uniform Intensity"))
 plotINT <- plotINT  + theme_bw()
 plotINT <- plotINT  + theme(legend.title=element_blank(), legend.position="bottom", legend.box="horizontal")
-plotINT <- plotINT  + theme(legend.text=element_text(size=11), axis.text=element_text(size=11), strip.text.x=element_text(size=11))
+plotINT <- plotINT  + theme(legend.text=element_text(size=13), strip.text.x=element_text(size=13))
+plotINT <- plotINT  + theme(axis.title=element_text(size=13), axis.text=element_text(size=11))
 plotINT <- plotINT  + theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank())
 
 # Save Output Plots -----------------------
