@@ -17,9 +17,12 @@ Dir4    <- "/Users/dondealban/Dropbox/Research/mindoro/stacked area/pa_mibnp/"
 DirMAIN <- "/Users/dondealban/Dropbox/Research/mindoro/stacked area/"
 
 # Load Libraries and Data ---------------
+library(egg)
+library(ggplot2)
+library(grid)
+library(gtable)
 library(reshape2)
 library(tidyverse)
-library(egg)
 
 # Function to Read Data Files -----------
 readdata <- function(filename) {
@@ -60,7 +63,7 @@ plot1 <- plot1 + labs(title="(a) Mindoro Island", x="Year", y="Percentage of Lan
 plot1 <- plot1 + scale_fill_manual(values=c("#246a24","#6666ff","#c6f800","#ffff66","#bcbdbc","#07d316","#ff0000","#66ccff"))
 plot1 <- plot1 + scale_x_continuous(breaks=c(1988,2000,2010,2015))
 plot1 <- plot1 + theme_bw()
-plot1 <- plot1 + theme(legend.position="bottom", legend.box="horizontal", legend.title = element_blank())
+plot1 <- plot1 + theme(legend.position="none")
 plot1 <- plot1 + theme(legend.text=element_text(size=13))
 plot1 <- plot1 + theme(axis.title=element_text(size=13), axis.text=element_text(size=11))
 plot1 <- plot1 + theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank())
@@ -94,7 +97,7 @@ plot2 <- plot2 + labs(title="(b) Mt. Calavite Wildlife Sanctuary", x="Year", y="
 plot2 <- plot2 + scale_fill_manual(values=c("#246a24","#6666ff","#c6f800","#ffff66","#bcbdbc","#07d316","#ff0000","#66ccff"))
 plot2 <- plot2 + scale_x_continuous(breaks=c(1988,2000,2010,2015))
 plot2 <- plot2 + theme_bw()
-plot2 <- plot2 + theme(legend.position="bottom", legend.box="horizontal", legend.title = element_blank())
+plot2 <- plot2 + theme(legend.position="none")
 plot2 <- plot2 + theme(legend.text=element_text(size=13))
 plot2 <- plot2 + theme(axis.title=element_text(size=13), axis.text=element_text(size=11))
 plot2 <- plot2 + theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank())
@@ -146,7 +149,7 @@ plot3 <- plot3 + scale_fill_manual(values=c("#246a24","#c6f800","#ffff66",
                                             "#bcbdbc","#07d316","#ff0000","#66ccff"))
 plot3 <- plot3 + scale_x_continuous(breaks=c(1988,2000,2010,2015))
 plot3 <- plot3 + theme_bw()
-plot3 <- plot3 + theme(legend.position="bottom", legend.box="horizontal", legend.title = element_blank())
+plot3 <- plot3 + theme(legend.position="none")
 plot3 <- plot3 + theme(legend.text=element_text(size=13))
 plot3 <- plot3 + theme(axis.title=element_text(size=13), axis.text=element_text(size=11))
 plot3 <- plot3 + theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank())
@@ -195,7 +198,7 @@ plot4 <- plot4 + labs(title="(d) Mts. Iglit-Baco National Park", x="Year", y="Pe
 plot4 <- plot4 + scale_fill_manual(values=c("#246a24","#c6f800","#ffff66","#bcbdbc","#07d316"))
 plot4 <- plot4 + scale_x_continuous(breaks=c(1988,2000,2010,2015))
 plot4 <- plot4 + theme_bw()
-plot4 <- plot4 + theme(legend.position="bottom", legend.box="horizontal", legend.title = element_blank())
+plot4 <- plot4 + theme(legend.position="none")
 plot4 <- plot4 + theme(legend.text=element_text(size=13))
 plot4 <- plot4 + theme(axis.title=element_text(size=13), axis.text=element_text(size=11))
 plot4 <- plot4 + theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank())
@@ -204,10 +207,61 @@ plot4 <- plot4 + theme(panel.grid.major=element_blank(), panel.grid.minor=elemen
 plotlayout <- lapply(list(plot1, plot2, plot3, plot4), expose_layout, FALSE, FALSE)
 grid.arrange(
   grobs = plotlayout,
-  widths = c(1,1),
+  widths = c(2,2),
   layout_matrix = rbind(c(1,2),
                         c(3,4))
 )
 mergeplot <- ggarrange(plot1, plot2, plot3, plot4, widths=c(1,1), heights=c(1,1))
 
+
+# Function to Combine Legend -------------
+grid_arrange_shared_legend <-
+  function(...,
+           ncol = length(list(...)),
+           nrow = 1,
+           position = c("bottom", "right"))
+    {
+    plots <- list(...)
+    position <- match.arg(position)
+    g <-
+      ggplotGrob(plots[[1]] + theme(legend.position = position))$grobs
+    legend <- g[[which(sapply(g, function(x)
+      x$name) == "guide-box")]]
+    lheight <- sum(legend$height)
+    lwidth <- sum(legend$width)
+    gl <- lapply(plots, function(x)
+      x + theme(legend.position = "none"))
+    gl <- c(gl, ncol = ncol, nrow = nrow)
+    
+    combined <- switch(
+      position,
+      "bottom" = arrangeGrob(
+        do.call(arrangeGrob, gl),
+        legend,
+        ncol = 1,
+        heights = unit.c(unit(1, "npc") - lheight, lheight)
+      ),
+      "right" = arrangeGrob(
+        do.call(arrangeGrob, gl),
+        legend,
+        ncol = 2,
+        widths = unit.c(unit(1, "npc") - lwidth, lwidth)
+      )
+    )
+    grid.newpage()
+    grid.draw(combined)
+    
+    # return gtable invisibly
+    invisible(combined)
+  }
+
+# Combine legend of merged plot
+mergeplot <- grid_arrange_shared_legend(plot1, plot2, plot3, plot4)
+
+mergeplot <- grid_arrange_shared_legend(plot1, plot2, plot3, plot4, widths=c(3,3), heights=c(1))
+
+
+# Save Plots -----------------------------
 ggsave(plot, file="StackedArea_Mindoro-Island_v2.pdf", width=16, height=15, units="cm", dpi=300)
+
+ggsave(grid_arrange_shared_legend(plot1, plot2, plot3, plot4), file="StackedArea_Mindoro-Island_v2.pdf", width=16, height=15, units="cm", dpi=300)
