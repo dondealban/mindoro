@@ -18,6 +18,7 @@ Dir4 <- "/Users/dondealban/Dropbox/Research/mindoro/stacked area/pa_mibnp"
 # Load Libraries and Data ---------------
 library(reshape2)
 library(tidyverse)
+library(egg)
 
 # Function to Read Data Files -----------
 readdata <- function(filename) {
