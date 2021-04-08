@@ -213,7 +213,6 @@ grid.arrange(
 )
 mergeplot <- ggarrange(plot1, plot2, plot3, plot4, widths=c(1,1), heights=c(1,1))
 
-
 # Function to Combine Legend -------------
 grid_arrange_shared_legend <-
   function(...,
@@ -256,12 +255,8 @@ grid_arrange_shared_legend <-
   }
 
 # Combine legend of merged plot
-mergeplot <- grid_arrange_shared_legend(plot1, plot2, plot3, plot4)
-
-mergeplot <- grid_arrange_shared_legend(plot1, plot2, plot3, plot4, widths=c(3,3), heights=c(1))
-
+grid_arrange_shared_legend(plot1, plot2, plot3, plot4)
 
 # Save Plots -----------------------------
-ggsave(plot, file="StackedArea_Mindoro-Island_v2.pdf", width=16, height=15, units="cm", dpi=300)
-
-ggsave(grid_arrange_shared_legend(plot1, plot2, plot3, plot4), file="StackedArea_Mindoro-Island_v2.pdf", width=16, height=15, units="cm", dpi=300)
+setwd(DirMAIN)
+ggsave(grid_arrange_shared_legend(plot1, plot2, plot3, plot4), file="StackedArea_Combined_v1.pdf", width=30, height=15, units="cm", dpi=300)
