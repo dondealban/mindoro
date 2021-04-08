@@ -10,7 +10,7 @@
 
 
 # Set Working Directory -----------------
-setwd("/Users/dondealban/Mindoro/mindoro_island")
+setwd("/Users/dondealban/Dropbox/Research/mindoro/stacked area/mindoro_island")
 
 # Load Libraries and Data ---------------
 library(reshape2)
