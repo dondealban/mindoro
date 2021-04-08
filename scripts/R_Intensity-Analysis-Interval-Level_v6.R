@@ -58,16 +58,18 @@ dfINT$Time.Interval <- gsub('_', '-', dfINT$Time.Interval) # Replace character i
 
 # Interval-level intensity analysis plot for all domains for both intervals
 plotINT <- ggplot() + geom_bar(data=dfINT, aes(x=Time.Interval, y=Ann.Change, fill="#c6c3bf"), stat="identity", position=position_dodge())
-plotINT <- plotINT  + geom_hline(data=dfINT, aes(yintercept=Uni.Ann.Change, colour="#000000"), linetype="dashed") # Uniform line
-plotINT <- plotINT  + facet_wrap(~Site)
+plotINT <- plotINT  + geom_hline(data=dfINT, aes(yintercept=Uni.Ann.Change, colour="#000000"), linetype="dashed", size=0.8) # Uniform line
+plotINT <- plotINT  + facet_grid(~Site)
 plotINT <- plotINT  + labs(x="Time Interval", y="Annual Change (% of Map)")
-plotINT <- plotINT  + scale_fill_manual(values=c("#c6c3bf"), name="", labels = c("Observed Change"))
+plotINT <- plotINT  + scale_fill_manual(values=c("#808080"), name="", labels = c("Observed Change"))
 plotINT <- plotINT  + scale_colour_manual(values=c("#000000"), labels=c("Uniform Intensity"))
+plotINT <- plotINT  + theme_bw()
 plotINT <- plotINT  + theme(legend.title=element_blank(), legend.position="bottom", legend.box="horizontal")
-plotINT <- plotINT  + theme(panel.grid.minor=element_blank())
+plotINT <- plotINT  + theme(legend.text=element_text(size=11), axis.text=element_text(size=11), strip.text.x=element_text(size=11))
+plotINT <- plotINT  + theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank())
 
 # Save Output Plots -----------------------
 
 # Output boxplots to a PDF file
-ggsave(plotINT, file="Mindoro-Interval-Level-Intensity-Analysis_v5.pdf", width=20, height=20, units="cm", dpi=300)
+ggsave(plotINT, file="Interval-Level-Intensity-Analysis_Mindoro_v6.pdf", width=30, height=15, units="cm", dpi=300)
 
