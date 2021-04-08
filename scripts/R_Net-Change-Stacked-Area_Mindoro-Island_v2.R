@@ -9,7 +9,12 @@
 # Last Modified:  08 Apr 2021
 
 
-# Set Working Directory -----------------
+# Set Working Directories ---------------
+Dir1 <- "/Users/dondealban/Dropbox/Research/mindoro/stacked area/mindoro_island"
+Dir1 <- "/Users/dondealban/Dropbox/Research/mindoro/stacked area/mindoro_island"
+Dir3 <- "/Users/dondealban/Dropbox/Research/mindoro/stacked area/mindoro_island"
+Dir4 <- "/Users/dondealban/Dropbox/Research/mindoro/stacked area/mindoro_island"
+
 setwd("/Users/dondealban/Dropbox/Research/mindoro/stacked area/mindoro_island")
 
 # Load Libraries and Data ---------------
@@ -59,4 +64,4 @@ plot <- plot + theme(legend.text=element_text(size=13))
 plot <- plot + theme(axis.title=element_text(size=13), axis.text=element_text(size=11))
 plot <- plot + theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank())
 
-ggsave(plot, file="StackedArea-00-Mindoro-Island.pdf", width=16, height=15, units="cm", dpi=300)
+ggsave(plot, file="StackedArea_Mindoro-Island_v2.pdf", width=16, height=15, units="cm", dpi=300)
