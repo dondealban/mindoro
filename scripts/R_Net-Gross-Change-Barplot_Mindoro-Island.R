@@ -95,6 +95,9 @@ main_onestep   <- netgrossplot(dataset = min_1988_2015$lulc_Onestep,
                                ylab = bquote("Area ("~ km^2 ~")"),
                                changesLabel = c(GC = "Gross change", NG = "Net gain", NL = "Net loss"),
                                color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C"))
+# Sankey diagram of gross land cover changes
+# Sankey diagram
+minSankey <- sankeyLand(dataset=min_1988_2015$lulc_Multistep, legendtable=min_1988_2015$tb_legend)
 
 # SPLIT STACKS ---------------------------
 
