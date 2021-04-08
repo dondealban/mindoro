@@ -130,10 +130,13 @@ plotCAT <- plotCAT  + facet_grid(ColD ~ ColA, scales="free_y")
 plotCAT <- plotCAT  + labs(x="Category", y="Category Intensity (% of Category)")
 plotCAT <- plotCAT  + scale_fill_manual(values=c("#8acd66","#b43507"), labels=c("Gain Intensity","Loss Intensity"))
 plotCAT <- plotCAT  + scale_colour_manual(values=c("#000000"), labels=c("Uniform Intensity"))
-plotCAT <- plotCAT  + theme(panel.grid.minor=element_blank())
+plotCAT <- plotCAT  + theme_bw()
 plotCAT <- plotCAT  + theme(legend.position="bottom", legend.box="horizontal", legend.title=element_blank())
+plotCAT <- plotCAT  + theme(legend.text=element_text(size=13), strip.text=element_text(size=13))
+plotCAT <- plotCAT  + theme(axis.title=element_text(size=13), axis.text=element_text(size=12))
+plotCAT <- plotCAT  + theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank())
 
 # Save Outputs --------------------------
 
 # Output boxplots to a PDF file
-ggsave(plotCAT, file="Category-Level-Intensity-Analysis_Mindoro_v2.pdf", width=25, height=25, units="cm", dpi=300)
+ggsave(plotCAT, file="Category-Level-Intensity-Analysis_Mindoro_v3.pdf", width=30, height=35, units="cm", dpi=300)
