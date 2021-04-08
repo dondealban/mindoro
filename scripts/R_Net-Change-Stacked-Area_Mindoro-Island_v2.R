@@ -59,7 +59,7 @@ plot1 <- ggplot() + geom_area(aes(x=Years, y=Percentage, fill=factor(Class,
                              "Built-up Area",
                              "Water Body"))), 
                     data=data1)
-plot1 <- plot1 + labs(title="(a) Mindoro Island", x="Year", y="Percentage of Landscape", fill="Land Cover Category")
+plot1 <- plot1 + labs(title="Mindoro Island", x="Year", y="Percentage of Landscape", fill="Land Cover Category")
 plot1 <- plot1 + scale_fill_manual(values=c("#246a24","#6666ff","#c6f800","#ffff66","#bcbdbc","#07d316","#ff0000","#66ccff"))
 plot1 <- plot1 + scale_x_continuous(breaks=c(1988,2000,2010,2015))
 plot1 <- plot1 + theme_bw()
@@ -93,7 +93,7 @@ plot2 <- ggplot() + geom_area(aes(x=Years, y=Percentage, fill=factor(Class,
                              "Built-up Area",
                              "Water Body"))), 
                     data=data2)
-plot2 <- plot2 + labs(title="(b) Mt. Calavite Wildlife Sanctuary", x="Year", y="Percentage of Landscape", fill="Land Cover Category")
+plot2 <- plot2 + labs(title="Mt. Calavite WS", x="Year", y="Percentage of Landscape", fill="Land Cover Category")
 plot2 <- plot2 + scale_fill_manual(values=c("#246a24","#6666ff","#c6f800","#ffff66","#bcbdbc","#07d316","#ff0000","#66ccff"))
 plot2 <- plot2 + scale_x_continuous(breaks=c(1988,2000,2010,2015))
 plot2 <- plot2 + theme_bw()
@@ -144,7 +144,7 @@ plot3 <- ggplot() + geom_area(aes(x=Years, y=Percentage, fill=factor(Class,
                              "Built-up Area",
                              "Water Body"))), 
                     data=data3)
-plot3 <- plot3 + labs(title="(c) Mt. Calavite Wildlife Sanctuary", x="Year", y="Percentage of Landscape", fill="Land Cover Category")
+plot3 <- plot3 + labs(title="Mt. Siburan KBA", x="Year", y="Percentage of Landscape", fill="Land Cover Category")
 plot3 <- plot3 + scale_fill_manual(values=c("#246a24","#c6f800","#ffff66",
                                             "#bcbdbc","#07d316","#ff0000","#66ccff"))
 plot3 <- plot3 + scale_x_continuous(breaks=c(1988,2000,2010,2015))
@@ -194,7 +194,7 @@ plot4 <- ggplot() + geom_area(aes(x=Years, y=Percentage, fill=factor(Class,
                              "Exposed Rock",
                              "Shrub / Other Vegetation"))), 
                     data=data4)
-plot4 <- plot4 + labs(title="(d) Mts. Iglit-Baco National Park", x="Year", y="Percentage of Landscape", fill="Land Cover Category")
+plot4 <- plot4 + labs(title="Mts. Iglit-Baco NP", x="Year", y="Percentage of Landscape", fill="Land Cover Category")
 plot4 <- plot4 + scale_fill_manual(values=c("#246a24","#c6f800","#ffff66","#bcbdbc","#07d316"))
 plot4 <- plot4 + scale_x_continuous(breaks=c(1988,2000,2010,2015))
 plot4 <- plot4 + theme_bw()
@@ -259,4 +259,4 @@ grid_arrange_shared_legend(plot1, plot2, plot3, plot4)
 
 # Save Plots -----------------------------
 setwd(DirMAIN)
-ggsave(grid_arrange_shared_legend(plot1, plot2, plot3, plot4), file="StackedArea_Combined_v1.pdf", width=40, height=15, units="cm", dpi=300)
+ggsave(grid_arrange_shared_legend(plot1, plot2, plot3, plot4), file="StackedArea_Combined_v1.pdf", width=30, height=15, units="cm", dpi=300)
