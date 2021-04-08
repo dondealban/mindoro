@@ -22,8 +22,8 @@ filenames <- list.files()
 # Function to read data
 readdata <- function(filename) {
   df <- read.csv(filename, sep="\t")
-  vec <- df[, 3]           # Read column with percentage values
-  names(vec) <- df[, 1]    # Read column with class codes
+  vec <- df[,3]           # Read column with percentage values
+  names(vec) <- df[,1]    # Read column with class codes
   return(vec)
 }
 
@@ -51,10 +51,12 @@ plot <- ggplot() + geom_area(aes(x=Years, y=Percentage, fill=factor(Class,
                             "Water Body"))), 
                    data=data)
 plot <- plot + labs(x="Year", y="Percentage of Landscape", fill="Land Cover Category")
-plot <- plot + scale_fill_manual(values=c("#246a24","#6666ff","#c6f800","#ffff66",
-                                          "#bcbdbc","#07d316","#ff0000","#66ccff"))
+plot <- plot + scale_fill_manual(values=c("#246a24","#6666ff","#c6f800","#ffff66","#bcbdbc","#07d316","#ff0000","#66ccff"))
 plot <- plot + scale_x_continuous(breaks=c(1988,2000,2010,2015))
 plot <- plot + theme_bw()
 plot <- plot + theme(legend.position="bottom", legend.box="horizontal", legend.title = element_blank())
+plot <- plot + theme(legend.text=element_text(size=13))
+plot <- plot + theme(axis.title=element_text(size=13), axis.text=element_text(size=11))
+plot <- plot + theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank())
 
 ggsave(plot, file="StackedArea-00-Mindoro-Island.pdf", width=16, height=15, units="cm", dpi=300)
