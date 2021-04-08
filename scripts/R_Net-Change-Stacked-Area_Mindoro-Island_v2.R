@@ -64,7 +64,7 @@ plot1 <- plot1 + scale_fill_manual(values=c("#246a24","#6666ff","#c6f800","#ffff
 plot1 <- plot1 + scale_x_continuous(breaks=c(1988,2000,2010,2015))
 plot1 <- plot1 + theme_bw()
 plot1 <- plot1 + theme(legend.position="none")
-plot1 <- plot1 + theme(legend.text=element_text(size=13))
+plot1 <- plot1 + theme(legend.title=element_text(size=13), legend.text=element_text(size=13))
 plot1 <- plot1 + theme(axis.title=element_text(size=13), axis.text=element_text(size=11))
 plot1 <- plot1 + theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank())
 
@@ -98,8 +98,8 @@ plot2 <- plot2 + scale_fill_manual(values=c("#246a24","#6666ff","#c6f800","#ffff
 plot2 <- plot2 + scale_x_continuous(breaks=c(1988,2000,2010,2015))
 plot2 <- plot2 + theme_bw()
 plot2 <- plot2 + theme(legend.position="none")
-plot2 <- plot2 + theme(legend.text=element_text(size=13))
-plot2 <- plot2 + theme(axis.title=element_text(size=13), axis.text=element_text(size=11))
+plot2 <- plot2 + theme(legend.title=element_text(size=13), legend.text=element_text(size=13))
+plot2 <- plot2 + theme(axis.title=element_text(size=13), axis.text=element_text(size=11), axis.title.y=element_blank())
 plot2 <- plot2 + theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank())
 
 # MT SIBURAN KEY BIODIVERSITY AREA
@@ -150,8 +150,8 @@ plot3 <- plot3 + scale_fill_manual(values=c("#246a24","#c6f800","#ffff66",
 plot3 <- plot3 + scale_x_continuous(breaks=c(1988,2000,2010,2015))
 plot3 <- plot3 + theme_bw()
 plot3 <- plot3 + theme(legend.position="none")
-plot3 <- plot3 + theme(legend.text=element_text(size=13))
-plot3 <- plot3 + theme(axis.title=element_text(size=13), axis.text=element_text(size=11))
+plot3 <- plot3 + theme(legend.title=element_text(size=13), legend.text=element_text(size=13))
+plot3 <- plot3 + theme(axis.title=element_text(size=13), axis.text=element_text(size=11), axis.title.y=element_blank())
 plot3 <- plot3 + theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank())
 
 # MTS IGLIT-BACO NATIONAL PARK
@@ -199,8 +199,8 @@ plot4 <- plot4 + scale_fill_manual(values=c("#246a24","#c6f800","#ffff66","#bcbd
 plot4 <- plot4 + scale_x_continuous(breaks=c(1988,2000,2010,2015))
 plot4 <- plot4 + theme_bw()
 plot4 <- plot4 + theme(legend.position="none")
-plot4 <- plot4 + theme(legend.text=element_text(size=13))
-plot4 <- plot4 + theme(axis.title=element_text(size=13), axis.text=element_text(size=11))
+plot4 <- plot4 + theme(legend.title=element_text(size=13), legend.text=element_text(size=13))
+plot4 <- plot4 + theme(axis.title=element_text(size=13), axis.text=element_text(size=11), axis.title.y=element_blank())
 plot4 <- plot4 + theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank())
 
 # Expose ggplot2 Layouts -----------------
@@ -259,4 +259,4 @@ grid_arrange_shared_legend(plot1, plot2, plot3, plot4)
 
 # Save Plots -----------------------------
 setwd(DirMAIN)
-ggsave(grid_arrange_shared_legend(plot1, plot2, plot3, plot4), file="StackedArea_Combined_v1.pdf", width=30, height=15, units="cm", dpi=300)
+ggsave(grid_arrange_shared_legend(plot1, plot2, plot3, plot4), file="StackedArea_Combined_v1.pdf", width=40, height=15, units="cm", dpi=300)
