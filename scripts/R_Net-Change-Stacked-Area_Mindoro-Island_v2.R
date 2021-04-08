@@ -53,7 +53,7 @@ plot1 <- ggplot() + geom_area(aes(x=Years, y=Percentage, fill=factor(Class,
                              "Built-up Area",
                              "Water Body"))), 
                     data=data1)
-plot1 <- plot1 + labs(x="Year", y="Percentage of Landscape", fill="Land Cover Category")
+plot1 <- plot1 + labs(title="(a) Mindoro Island", x="Year", y="Percentage of Landscape", fill="Land Cover Category")
 plot1 <- plot1 + scale_fill_manual(values=c("#246a24","#6666ff","#c6f800","#ffff66","#bcbdbc","#07d316","#ff0000","#66ccff"))
 plot1 <- plot1 + scale_x_continuous(breaks=c(1988,2000,2010,2015))
 plot1 <- plot1 + theme_bw()
@@ -61,5 +61,41 @@ plot1 <- plot1 + theme(legend.position="bottom", legend.box="horizontal", legend
 plot1 <- plot1 + theme(legend.text=element_text(size=13))
 plot1 <- plot1 + theme(axis.title=element_text(size=13), axis.text=element_text(size=11))
 plot1 <- plot1 + theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank())
+
+# MT CALAVITE WILDLIFE SANCTUARY
+
+# Read csv files in the directory and store as a list
+setwd(Dir2)
+filenames2 <- list.files()
+
+# Combine as class codes and percentage values in a matrix
+temp2 <- do.call(rbind, lapply(filenames2, readdata))
+colnames(temp2) <- c("1","2","3","4","5","6","7","8")
+row.names(temp2) <- c("1988","2000","2010","2015") # Add years as another column
+
+# Convert wide format data frame into long format data frame
+data2 <- melt(temp2, id.vars="years", variable.name="class", value.name="percentage")
+colnames(data2) <- c("Years","Class","Percentage")
+
+# Create stacked area plot
+plot2 <- ggplot() + geom_area(aes(x=Years, y=Percentage, fill=factor(Class,
+                    labels=c("Forest",
+                             "Mangrove",
+                             "Grassland",
+                             "Rice Paddy / Bare Soil",
+                             "Exposed Rock",
+                             "Shrub / Other Vegetation",
+                             "Built-up Area",
+                             "Water Body"))), 
+                             data=data2)
+plot2 <- plot2 + labs(title="(a) Mt. Calavite Wildlife Sanctuary", x="Year", y="Percentage of Landscape", fill="Land Cover Category")
+plot2 <- plot2 + scale_fill_manual(values=c("#246a24","#6666ff","#c6f800","#ffff66","#bcbdbc","#07d316","#ff0000","#66ccff"))
+plot2 <- plot2 + scale_x_continuous(breaks=c(1988,2000,2010,2015))
+plot2 <- plot2 + theme_bw()
+plot2 <- plot2 + theme(legend.position="bottom", legend.box="horizontal", legend.title = element_blank())
+plot2 <- plot2 + theme(legend.text=element_text(size=13))
+plot2 <- plot2 + theme(axis.title=element_text(size=13), axis.text=element_text(size=11))
+plot2 <- plot2 + theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank())
+
 
 ggsave(plot, file="StackedArea_Mindoro-Island_v2.pdf", width=16, height=15, units="cm", dpi=300)
