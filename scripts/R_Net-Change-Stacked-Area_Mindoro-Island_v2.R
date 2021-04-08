@@ -1,13 +1,12 @@
 # Script Description --------------------
-# This script creates a stacked area graph of multi-temporal land cover data, particularly
-# the land cover maps produced using Landsat data at four time-points: 1988, 2000, 2010,
-# and 2015 for Mindoro Island, Philippines. The land cover maps consist of 8 categories 
-# including: forest, mangrove, grasland, rice paddy/bare soil, exposed rock, shrubs/other
+# This script creates a stacked area graph of multi-temporal land cover data, particularly the land cover maps produced
+# using Landsat data at four time-points: 1988, 2000, 2010, and 2015 for Mindoro Island, Philippines. The land cover maps
+# consist of 8 categories including: forest, mangrove, grasland, rice paddy/bare soil, exposed rock, shrubs/other
 # vegetation, and water.
 #
 # Script By:      Jose Don T De Alban
 # Date Created:   20 Nov 2017
-# Last Modified:  30 Jul 2019
+# Last Modified:  08 Apr 2021
 
 
 # Set Working Directory -----------------
