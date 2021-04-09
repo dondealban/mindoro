@@ -14,6 +14,7 @@ setwd("/Users/dondealban/Dropbox/Research/Mindoro/intensity analysis/")
 # Load Libraries --------------------------
 library(tidyverse)
 library(readxl)
+library(egg)
 
 # Read Input Data -------------------------
 
@@ -82,8 +83,18 @@ plotL <- plotL + theme(legend.text=element_text(size=13), strip.text=element_tex
 plotL <- plotL + theme(axis.title=element_text(size=13), axis.text=element_text(size=12))
 plotL <- plotL + theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank())
 
+# Expose ggplot2 Layouts ----------------
+plotlayout <- lapply(list(plotL, plotG), expose_layout, FALSE, FALSE)
+grid.arrange(
+  grobs = plotlayout,
+  widths = c(1,1),
+  layout_matrix = rbind(c(1,2))
+)
+mergeplot <- ggarrange(plotL, plotG, widths=c(1,1), heights=c(1))
+
 # Save Outputs --------------------------
 
 # Output boxplots to a PDF file
-ggsave(plotG, file="Transition-Level-Intensity-Analysis-Forest-Gain_v2.pdf", width=25, height=25, units="cm", dpi=300)
-ggsave(plotL, file="Transition-Level-Intensity-Analysis-Forest-Loss_v2.pdf", width=25, height=25, units="cm", dpi=300)
+ggsave(plotG, file="Transition-Level-Intensity-Analysis_Forest-Gain_v3.pdf", width=30, height=35, units="cm", dpi=300)
+ggsave(plotL, file="Transition-Level-Intensity-Analysis_Forest-Loss_v3.pdf", width=30, height=35, units="cm", dpi=300)
+ggsave(plotCombined, file="Transition-Level-Intensity-Analysis_Forest-Gain_v3.pdf", width=30, height=35, units="cm", dpi=300)
