@@ -61,7 +61,7 @@ plotG <- plotG + geom_hline(data=dfGain, aes(yintercept=ColG, colour="#000000"),
 plotG <- plotG + facet_grid(ColB ~ ColA, scales="free_y")
 plotG <- plotG + labs(x="Losing Category", y="Annual Transition Intensity (% of Category at Initial Time)")
 plotG <- plotG + labs(title="(a) Gross forest gain transitions")
-plotG <- plotG + scale_fill_manual(values=c("#4472c4"), labels=c("Gain Intensity"))
+plotG <- plotG + scale_fill_manual(values=c("#5b9bd5"), labels=c("Gain Intensity"))
 plotG <- plotG + scale_colour_manual(values=c("#000000"), labels=c("Uniform Intensity"))
 plotG <- plotG + theme_bw()
 plotG <- plotG + theme(legend.position="bottom", legend.box="horizontal", legend.title=element_blank())
@@ -75,7 +75,7 @@ plotL <- plotL + geom_hline(data=dfLoss, aes(yintercept=ColG, colour="#000000"),
 plotL <- plotL + facet_grid(ColB ~ ColA, scales="free_y")
 plotL <- plotL + labs(x="Gaining Category", y="Annual Transition Intensity (% of Category at Final Time)")
 plotL <- plotL + labs(title="(a) Gross forest loss transitions")
-plotL <- plotL + scale_fill_manual(values=c("#4472c4"), labels=c("Loss Intensity"))
+plotL <- plotL + scale_fill_manual(values=c("#ed7d31"), labels=c("Loss Intensity"))
 plotL <- plotL + scale_colour_manual(values=c("#000000"), labels=c("Uniform Intensity"))
 plotL <- plotL + theme_bw()
 plotL <- plotL + theme(legend.position="bottom", legend.box="horizontal", legend.title=element_blank())
@@ -98,5 +98,3 @@ mergeplot <- ggarrange(plotL, plotG, widths=c(1,1), heights=c(1))
 ggsave(plotG, file="Transition-Level-Intensity-Analysis_Forest-Gain_v3.pdf", width=30, height=35, units="cm", dpi=300)
 ggsave(plotL, file="Transition-Level-Intensity-Analysis_Forest-Loss_v3.pdf", width=30, height=35, units="cm", dpi=300)
 ggsave(mergeplot, file="Transition-Level-Intensity-Analysis_Combined-Forest-GainLoss_v1.pdf", width=60, height=35, units="cm", dpi=300)
-
-
