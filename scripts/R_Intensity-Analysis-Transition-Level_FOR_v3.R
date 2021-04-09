@@ -56,7 +56,7 @@ colnames(dfLoss) <- c(list)
 
 # Plot 1: To N (Gain Transition)
 plotG <- ggplot() + geom_bar(data=dfGain, aes(x=ColD, y=ColF, fill=ColC), stat="identity", position=position_dodge())
-plotG <- plotG + geom_hline(data=dfGain, aes(yintercept=ColG, colour="#000000"), linetype="dashed") # Uniform line
+plotG <- plotG + geom_hline(data=dfGain, aes(yintercept=ColG, colour="#000000"), linetype="dashed", size=0.8) # Uniform line
 plotG <- plotG + facet_grid(ColB ~ ColA, scales="free_y")
 plotG <- plotG + labs(x="Losing Category", y="Annual Transition Intensity (% of Category at Initial Time)")
 plotG <- plotG + scale_fill_manual(values=c("#4472c4"), labels=c("Gain Intensity"))
@@ -66,7 +66,7 @@ plotG <- plotG + theme(legend.position="bottom", legend.box="horizontal", legend
 
 # Plot 2: From M (Loss Transition)
 plotL <- ggplot() + geom_bar(data=dfLoss, aes(x=ColD, y=ColF, fill=ColC), stat="identity", position=position_dodge())
-plotL <- plotL + geom_hline(data=dfLoss, aes(yintercept=ColG, colour="#000000"), linetype="dashed") # Uniform line
+plotL <- plotL + geom_hline(data=dfLoss, aes(yintercept=ColG, colour="#000000"), linetype="dashed", size=0.8) # Uniform line
 plotL <- plotL + facet_grid(ColB ~ ColA, scales="free_y")
 plotL <- plotL + labs(x="Gaining Category", y="Annual Transition Intensity (% of Category at Final Time)")
 plotL <- plotL + scale_fill_manual(values=c("#4472c4"), labels=c("Loss Intensity"))
