@@ -97,4 +97,6 @@ mergeplot <- ggarrange(plotL, plotG, widths=c(1,1), heights=c(1))
 # Output boxplots to a PDF file
 ggsave(plotG, file="Transition-Level-Intensity-Analysis_Forest-Gain_v3.pdf", width=30, height=35, units="cm", dpi=300)
 ggsave(plotL, file="Transition-Level-Intensity-Analysis_Forest-Loss_v3.pdf", width=30, height=35, units="cm", dpi=300)
-ggsave(plotCombined, file="Transition-Level-Intensity-Analysis_Forest-Gain_v3.pdf", width=30, height=35, units="cm", dpi=300)
+ggsave(mergeplot, file="Transition-Level-Intensity-Analysis_Combined-Forest-GainLoss_v1.pdf", width=60, height=35, units="cm", dpi=300)
+
+
