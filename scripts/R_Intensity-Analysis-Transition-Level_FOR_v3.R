@@ -60,7 +60,7 @@ plotG <- ggplot() + geom_bar(data=dfGain, aes(x=ColD, y=ColF, fill=ColC), stat="
 plotG <- plotG + geom_hline(data=dfGain, aes(yintercept=ColG, colour="#000000"), linetype="dashed", size=0.8) # Uniform line
 plotG <- plotG + facet_grid(ColB ~ ColA, scales="free_y")
 plotG <- plotG + labs(x="Losing Category", y="Annual Transition Intensity (% of Category at Initial Time)")
-plotG <- plotG + labs(title="(a) Gross forest gain transitions")
+plotG <- plotG + labs(title="(b) Gross forest gain transitions")
 plotG <- plotG + scale_fill_manual(values=c("#5b9bd5"), labels=c("Gain Intensity"))
 plotG <- plotG + scale_colour_manual(values=c("#000000"), labels=c("Uniform Intensity"))
 plotG <- plotG + theme_bw()
