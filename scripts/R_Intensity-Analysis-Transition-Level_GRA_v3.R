@@ -1,14 +1,12 @@
 # Script Description --------------------
-# This R script generates barplots using ggplot2 package to visualise the transition-level
-# intensity analysis of of changes in Mindoro Island, Philippines derived from land cover
-# classification of Landsat data for three time-intervals: 1988-2000, 2000-2010, and
-# 2010-2015. Intensity analysis was calculated using an Excel spreadsheet with a VBA macro
-# (see https://sites.google.com/site/intensityanalysis/). The domain of analysis is
-# Mindoro Island.
+# This R script generates barplots using ggplot2 package to visualise the transition-level intensity analysis of
+# changes in Mindoro Island, Philippines derived from land cover classification of Landsat data for three time-
+# intervals: 1988-2000, 2000-2010, and 2010-2015. Intensity analysis was calculated using an Excel spreadsheet with a VBA macro
+# (see https://sites.google.com/site/intensityanalysis/). The domain of analysis is Mindoro Island.
 #
 # Script By:      Jose Don T De Alban
 # Date Created:   13 Mar 2018
-# Last Modified:  26 Aug 2019
+# Last Modified:  09 Apr 2021
 
 # Set Working Directory -------------------
 setwd("/Users/dondealban/Dropbox/Research/Mindoro/intensity analysis/")
