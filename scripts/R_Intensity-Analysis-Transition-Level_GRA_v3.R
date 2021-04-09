@@ -59,23 +59,31 @@ plotG <- ggplot() + geom_bar(data=dfGain, aes(x=ColD, y=ColF, fill=ColC), stat="
 plotG <- plotG + geom_hline(data=dfGain, aes(yintercept=ColG, colour="#000000"), linetype="dashed") # Uniform line
 plotG <- plotG + facet_grid(ColB ~ ColA, scales="free_y")
 plotG <- plotG + labs(x="Losing Category", y="Annual Transition Intensity (% of Category at Initial Time)")
-plotG <- plotG + scale_fill_manual(values=c("#4472c4"), labels=c("Gain Intensity"))
+plotG <- plotG + labs(title="(b) Gross grassland gain transitions")
+plotG <- plotG + scale_fill_manual(values=c("#5b9bd5"), labels=c("Gain Intensity"))
 plotG <- plotG + scale_colour_manual(values=c("#000000"), labels=c("Uniform Intensity"))
-plotG <- plotG + theme(panel.grid.minor=element_blank())
+plotG <- plotG + theme_bw()
 plotG <- plotG + theme(legend.position="bottom", legend.box="horizontal", legend.title=element_blank())
+plotG <- plotG + theme(legend.text=element_text(size=13), strip.text=element_text(size=13))
+plotG <- plotG + theme(axis.title=element_text(size=13), axis.text=element_text(size=12))
+plotG <- plotG + theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank())
 
 # Plot 2: From M (Loss Transition)
 plotL <- ggplot() + geom_bar(data=dfLoss, aes(x=ColD, y=ColF, fill=ColC), stat="identity", position=position_dodge())
 plotL <- plotL + geom_hline(data=dfLoss, aes(yintercept=ColG, colour="#000000"), linetype="dashed") # Uniform line
 plotL <- plotL + facet_grid(ColB ~ ColA, scales="free_y")
 plotL <- plotL + labs(x="Gaining Category", y="Annual Transition Intensity (% of Category at Final Time)")
-plotL <- plotL + scale_fill_manual(values=c("#4472c4"), labels=c("Loss Intensity"))
+plotL <- plotL + labs(title="(a) Gross grassland loss transitions")
+plotL <- plotL + scale_fill_manual(values=c("#ed7d31"), labels=c("Loss Intensity"))
 plotL <- plotL + scale_colour_manual(values=c("#000000"), labels=c("Uniform Intensity"))
-plotL <- plotL + theme(panel.grid.minor=element_blank())
+plotL <- plotL + theme_bw()
 plotL <- plotL + theme(legend.position="bottom", legend.box="horizontal", legend.title=element_blank())
+plotL <- plotL + theme(legend.text=element_text(size=13), strip.text=element_text(size=13))
+plotL <- plotL + theme(axis.title=element_text(size=13), axis.text=element_text(size=12))
+plotL <- plotL + theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank())
 
 # Save Outputs --------------------------
 
 # Output boxplots to a PDF file
-ggsave(plotG, file="Transition-Level-Intensity-Analysis-Grassland-Gain_v2.pdf", width=25, height=25, units="cm", dpi=300)
-ggsave(plotL, file="Transition-Level-Intensity-Analysis-Grassland-Loss_v2.pdf", width=25, height=25, units="cm", dpi=300)
+ggsave(plotG, file="Transition-Level-Intensity-Analysis_Grassland-Gain_v3.pdf", width=30, height=35, units="cm", dpi=300)
+ggsave(plotL, file="Transition-Level-Intensity-Analysis_Grassland-Loss_v3.pdf", width=30, height=35, units="cm", dpi=300)
