@@ -49,8 +49,8 @@ plot1 <- plot1 + scale_colour_manual(name="Land Cover Type",
 plot1 <- plot1 + scale_x_continuous(breaks=c(1988,2000,2010,2015))
 plot1 <- plot1 + theme_bw()
 plot1 <- plot1 + theme(legend.title=element_blank(), legend.position="bottom", legend.box="horizontal")
-plot1 <- plot1 + theme(legend.text=element_text(size=13), strip.text.x=element_text(size=13))
-plot1 <- plot1 + theme(axis.title=element_text(size=13), axis.text=element_text(size=11))
+plot1 <- plot1 + theme(legend.text=element_text(size=14), strip.text.x=element_text(size=13))
+plot1 <- plot1 + theme(axis.title=element_text(size=14), axis.text=element_text(size=12))
 plot1 <- plot1 + theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank())
 
 # Plot #2: Changes in Landscape Metrics for a Subset of Land Cover Types
@@ -60,13 +60,13 @@ plot2 <- plot2 + scale_colour_manual(name="Land Cover Type", values=c("#246a24",
 plot2 <- plot2 + scale_x_continuous(breaks=c(1988,2000,2010,2015))
 plot2 <- plot2 + theme_bw()
 plot2 <- plot2 + theme(legend.title=element_blank(), legend.position="bottom", legend.box="horizontal")
-plot2 <- plot2 + theme(legend.text=element_text(size=13), strip.text.x=element_text(size=13))
-plot2 <- plot2 + theme(axis.title=element_text(size=13), axis.text=element_text(size=11))
+plot2 <- plot2 + theme(legend.text=element_text(size=14), strip.text.x=element_text(size=13))
+plot2 <- plot2 + theme(axis.title=element_text(size=14), axis.text=element_text(size=12))
 plot2 <- plot2 + theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank())
 
 # Save Output Plots -----------------------
 
 # Output boxplots to a PDF file
 ggsave(plot1, file="Landscape-Metrics_All-LandCover_Mindoro_v1.pdf", width=50, height=25, units="cm", dpi=300)
-ggsave(plot2, file="Landscape-Metrics_Forest-Grassland_Mindoro_v1.pdf", width=50, height=30, units="cm", dpi=300)
+ggsave(plot2, file="Landscape-Metrics_Forest-Grassland_Mindoro_v1.pdf", width=50, height=25, units="cm", dpi=300)
 
