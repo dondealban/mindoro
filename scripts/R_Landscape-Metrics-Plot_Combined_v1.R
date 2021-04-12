@@ -17,3 +17,7 @@ library(tidyverse)
 
 # Read Data Files ------------------------
 csvLM <- read.csv(file="mindoro-pattern-metrics-wide-final-allregions_rev.csv", header=TRUE, sep=",")
+
+# Rename column names
+colnames(csvLM) <- c("Code.Region.Year","Site","Year","Class.Code","Land.Cover", "Percent.Landscape",
+                     "Number.Patches","Mean.Patch.Area","Edge.Density","Mean.Shape.Index","Mean.NN.Distance") 
