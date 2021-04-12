@@ -98,3 +98,7 @@ mergeplot <- ggarrange(plotL, plotG, widths=c(1,1), heights=c(1))
 ggsave(plotG, file="Transition-Level-Intensity-Analysis_Forest-Gain_v3.pdf", width=30, height=35, units="cm", dpi=300)
 ggsave(plotL, file="Transition-Level-Intensity-Analysis_Forest-Loss_v3.pdf", width=30, height=35, units="cm", dpi=300)
 ggsave(mergeplot, file="Transition-Level-Intensity-Analysis_Combined-Forest-GainLoss_v1.pdf", width=60, height=35, units="cm", dpi=300)
+ggsave(mergeplot, file="Transition-Level-Intensity-Analysis_Combined-Forest-GainLoss_v2.pdf", width=55, height=30, units="cm", dpi=300)
+ggsave(mergeplot, file="Transition-Level-Intensity-Analysis_Combined-Forest-GainLoss_v3.pdf", width=50, height=25, units="cm", dpi=300)
+
+
