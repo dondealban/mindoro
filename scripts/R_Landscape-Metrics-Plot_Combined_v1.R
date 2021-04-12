@@ -37,7 +37,12 @@ plot1 <- plot1 + scale_colour_manual(name="Land Cover Type",
                                      values=c("#246a24","#6666ff","#c6f800","#ffff66","#bcbdbc","#07d316","#ff0000","#66ccff"),
                                      labels=c("Forest","Mangrove","Grassland","Rice Paddy / Bare Soil",
                                               "Exposed Rock","Shrub / Other Vegetation","Built-up Area","Water Body"))
-
+plot1 <- plot1 + scale_x_continuous(breaks=c(1988,2000,2010,2015))
+plot1 <- plot1 + theme_bw()
+plot1 <- plot1 + theme(legend.title=element_blank(), legend.position="bottom", legend.box="horizontal")
+plot1 <- plot1 + theme(legend.text=element_text(size=13), strip.text.x=element_text(size=13))
+plot1 <- plot1 + theme(axis.title=element_text(size=13), axis.text=element_text(size=11))
+plot1 <- plot1 + theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank())
 
 # Plot #2: Changes in Landscape Metrics for a Subset of Land Cover Types
 plot2 <- ggplot() + geom_line(data=dfLMsub, aes(x=Year, y=Value, colour=as.factor(Class.Code)))
@@ -48,5 +53,5 @@ plot2 <- plot2 + theme_bw()
 plot2 <- plot2 + theme(legend.title=element_blank(), legend.position="bottom", legend.box="horizontal")
 plot2 <- plot2 + theme(legend.text=element_text(size=13), strip.text.x=element_text(size=13))
 plot2 <- plot2 + theme(axis.title=element_text(size=13), axis.text=element_text(size=11))
-
+plot2 <- plot2 + theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank())
 
