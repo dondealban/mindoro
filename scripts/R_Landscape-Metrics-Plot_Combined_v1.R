@@ -14,3 +14,6 @@ setwd("/Users/dondealban/Dropbox/Research/Mindoro/landscape patterns/")
 
 # Load Libraries --------------------------
 library(tidyverse)
+
+# Read Data Files ------------------------
+csvLM <- read.csv(file="mindoro-pattern-metrics-wide-final-allregions.csv", header=TRUE, sep=",")
