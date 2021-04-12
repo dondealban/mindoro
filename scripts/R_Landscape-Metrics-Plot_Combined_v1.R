@@ -40,7 +40,7 @@ dfLMsub <- dfLMall %>% filter(dfLMall$Land.Cover %in% "Forest" | dfLMall$Land.Co
 # Generate Plots ------------------------
 
 # Plot #1: Changes in Landscape Metrics for All Land Cover Types
-plot1 <- ggplot() + geom_line(data=dfLMall, aes(x=Year, y=Value, colour=as.factor(Class.Code)))
+plot1 <- ggplot() + geom_line(data=dfLMall, aes(x=Year, y=Value, colour=as.factor(Class.Code)), size=0.8)
 plot1 <- plot1 + facet_wrap(Site ~ Landscape.Metrics, ncol=6, scales="free_y")
 plot1 <- plot1 + scale_colour_manual(name="Land Cover Type",
                                      values=c("#246a24","#6666ff","#c6f800","#ffff66","#bcbdbc","#07d316","#ff0000","#66ccff"),
@@ -54,7 +54,7 @@ plot1 <- plot1 + theme(axis.title=element_text(size=13), axis.text=element_text(
 plot1 <- plot1 + theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank())
 
 # Plot #2: Changes in Landscape Metrics for a Subset of Land Cover Types
-plot2 <- ggplot() + geom_line(data=dfLMsub, aes(x=Year, y=Value, colour=as.factor(Class.Code)))
+plot2 <- ggplot() + geom_line(data=dfLMsub, aes(x=Year, y=Value, colour=as.factor(Class.Code)), size=0.8)
 plot2 <- plot2 + facet_wrap(Site ~ Landscape.Metrics, ncol=6, scales="free_y")
 plot2 <- plot2 + scale_colour_manual(name="Land Cover Type", values=c("#246a24","#07d316"), labels=c("Forest","Grassland"))
 plot2 <- plot2 + scale_x_continuous(breaks=c(1988,2000,2010,2015))
@@ -68,5 +68,5 @@ plot2 <- plot2 + theme(panel.grid.major=element_blank(), panel.grid.minor=elemen
 
 # Output boxplots to a PDF file
 ggsave(plot1, file="Landscape-Metrics_All-LandCover_Mindoro_v1.pdf", width=50, height=25, units="cm", dpi=300)
-ggsave(plot2, file="Landscape-Metrics_Forest-Grassland_Mindoro_v1.pdf", width=50, height=25, units="cm", dpi=300)
+ggsave(plot2, file="Landscape-Metrics_Forest-Grassland_Mindoro_v1.pdf", width=50, height=30, units="cm", dpi=300)
 
