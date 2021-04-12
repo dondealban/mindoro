@@ -42,4 +42,5 @@ plot1 <- plot1 + scale_colour_manual(name="Land Cover Type",
 # Plot #2: Changes in Landscape Metrics for a Subset of Land Cover Types
 plot2 <- ggplot() + geom_line(data=dfLMsub, aes(x=Year, y=Value, colour=as.factor(Class.Code)))
 plot2 <- plot2 + facet_wrap(Site ~ Landscape.Metrics, ncol=6, scales="free_y")
+plot2 <- plot2 + scale_colour_manual(name="Land Cover Type", values=c("#246a24","#c6f800"), labels=c("Forest","Grassland"))
 
