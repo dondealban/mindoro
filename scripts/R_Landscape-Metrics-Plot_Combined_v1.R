@@ -12,3 +12,5 @@
 # Set Working Directory -------------------
 setwd("/Users/dondealban/Dropbox/Research/Mindoro/landscape patterns/")
 
+# Load Libraries --------------------------
+library(tidyverse)
