@@ -25,6 +25,21 @@ colnames(csvLM) <- c("Code.Region.Year","Site","Year","Class.Code","Land.Cover",
 # Convert dataframe from wide-format to long-format
 dfLMall <- melt(csvLM, id.vars=c("Code.Region.Year","Site","Year","Class.Code","Land.Cover"))
 colnames(dfLMall) <- c("Code.Region.Year","Site","Year","Class.Code","Land.Cover","Landscape.Metrics","Value")
-
 # Create subset dataframe by extracting forest/grassland land cover types
 dfLMsub <- dfLMall %>% filter(dfLMall$Land.Cover %in% "Forest" | dfLMall$Land.Cover %in% "Grassland")
+
+# Generate Plots ------------------------
+
+# Plot #1: Changes in Landscape Metrics for All Land Cover Types
+plot1 <- ggplot() + geom_line(data=dfLMall, aes(x=Year, y=Value, colour=as.factor(Class.Code)))
+plot1 <- plot1 + facet_wrap(Site ~ Landscape.Metrics, ncol=6, scales="free_y")
+plot1 <- plot1 + scale_colour_manual(name="Land Cover Type",
+                                     values=c("#246a24","#6666ff","#c6f800","#ffff66","#bcbdbc","#07d316","#ff0000","#66ccff"),
+                                     labels=c("Forest","Mangrove","Grassland","Rice Paddy / Bare Soil",
+                                              "Exposed Rock","Shrub / Other Vegetation","Built-up Area","Water Body"))
+
+
+# Plot #2: Changes in Landscape Metrics for a Subset of Land Cover Types
+plot2 <- ggplot() + geom_line(data=dfLMsub, aes(x=Year, y=Value, colour=as.factor(Class.Code)))
+plot2 <- plot2 + facet_wrap(Site ~ Landscape.Metrics, ncol=6, scales="free_y")
+
