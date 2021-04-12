@@ -21,10 +21,19 @@ csvLM <- read.csv(file="mindoro-pattern-metrics-wide-final-allregions_rev.csv", 
 colnames(csvLM) <- c("Code.Region.Year","Site","Year","Class.Code","Land.Cover","Percent.Landscape",
                      "Number.Patches","Mean.Patch.Area","Edge.Density","Mean.Shape.Index","Mean.NN.Distance")
 
-# Reorganise Input Data Files ------------
+# Organise Input Data Files --------------
 # Convert dataframe from wide-format to long-format
 dfLMall <- melt(csvLM, id.vars=c("Code.Region.Year","Site","Year","Class.Code","Land.Cover"))
 colnames(dfLMall) <- c("Code.Region.Year","Site","Year","Class.Code","Land.Cover","Landscape.Metrics","Value")
+
+# Replace content of input cells
+dfLMall$Landscape.Metrics <- gsub('Percent.Landscape', 'percent of landscape (%)', dfLMall$Landscape.Metrics)
+dfLMall$Landscape.Metrics <- gsub('Number.Patches', 'number of patches', dfLMall$Landscape.Metrics)
+dfLMall$Landscape.Metrics <- gsub('Mean.Patch.Area', 'mean patch area (ha)', dfLMall$Landscape.Metrics)
+dfLMall$Landscape.Metrics <- gsub('Edge.Density', 'edge density (m/ha)', dfLMall$Landscape.Metrics)
+dfLMall$Landscape.Metrics <- gsub('Mean.Shape.Index', 'mean shape index', dfLMall$Landscape.Metrics)
+dfLMall$Landscape.Metrics <- gsub('Mean.NN.Distance', 'mean nearest neighbor distance (m)', dfLMall$Landscape.Metrics)
+
 # Create subset dataframe by extracting forest/grassland land cover types
 dfLMsub <- dfLMall %>% filter(dfLMall$Land.Cover %in% "Forest" | dfLMall$Land.Cover %in% "Grassland")
 
