@@ -32,7 +32,7 @@ dfLMall$Landscape.Metrics <- gsub('Number.Patches', 'number of patches', dfLMall
 dfLMall$Landscape.Metrics <- gsub('Mean.Patch.Area', 'mean patch area (ha)', dfLMall$Landscape.Metrics)
 dfLMall$Landscape.Metrics <- gsub('Edge.Density', 'edge density (m/ha)', dfLMall$Landscape.Metrics)
 dfLMall$Landscape.Metrics <- gsub('Mean.Shape.Index', 'mean shape index', dfLMall$Landscape.Metrics)
-dfLMall$Landscape.Metrics <- gsub('Mean.NN.Distance', 'mean nearest neighbor distance (m)', dfLMall$Landscape.Metrics)
+dfLMall$Landscape.Metrics <- gsub('Mean.NN.Distance', 'mean nn distance (m)', dfLMall$Landscape.Metrics)
 
 # Create subset dataframe by extracting forest/grassland land cover types
 dfLMsub <- dfLMall %>% filter(dfLMall$Land.Cover %in% "Forest" | dfLMall$Land.Cover %in% "Grassland")
