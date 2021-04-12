@@ -46,3 +46,7 @@ plot2 <- plot2 + scale_colour_manual(name="Land Cover Type", values=c("#246a24",
 plot2 <- plot2 + scale_x_continuous(breaks=c(1988,2000,2010,2015))
 plot2 <- plot2 + theme_bw()
 plot2 <- plot2 + theme(legend.title=element_blank(), legend.position="bottom", legend.box="horizontal")
+plot2 <- plot2 + theme(legend.text=element_text(size=13), strip.text.x=element_text(size=13))
+plot2 <- plot2 + theme(axis.title=element_text(size=13), axis.text=element_text(size=11))
+
+
