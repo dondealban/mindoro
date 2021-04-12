@@ -43,4 +43,6 @@ plot1 <- plot1 + scale_colour_manual(name="Land Cover Type",
 plot2 <- ggplot() + geom_line(data=dfLMsub, aes(x=Year, y=Value, colour=as.factor(Class.Code)))
 plot2 <- plot2 + facet_wrap(Site ~ Landscape.Metrics, ncol=6, scales="free_y")
 plot2 <- plot2 + scale_colour_manual(name="Land Cover Type", values=c("#246a24","#c6f800"), labels=c("Forest","Grassland"))
-
+plot2 <- plot2 + scale_x_continuous(breaks=c(1988,2000,2010,2015))
+plot2 <- plot2 + theme_bw()
+plot2 <- plot2 + theme(legend.title=element_blank(), legend.position="bottom", legend.box="horizontal")
