@@ -20,4 +20,9 @@ csvLM <- read.csv(file="mindoro-pattern-metrics-wide-final-allregions_rev.csv", 
 
 # Rename column names
 colnames(csvLM) <- c("Code.Region.Year","Site","Year","Class.Code","Land.Cover", "Percent.Landscape",
-                     "Number.Patches","Mean.Patch.Area","Edge.Density","Mean.Shape.Index","Mean.NN.Distance") 
+                     "Number.Patches","Mean.Patch.Area","Edge.Density","Mean.Shape.Index","Mean.NN.Distance")
+
+# Create full dataframe 
+dfLMall <- csvLM
+# Create subset dataframe by extracting forest/grassland land cover types
+dfLMsub <- csvLM %>% filter(csvLM$Land.Cover %in% "Forest" | csvLM$Land.Cover %in% "Grassland")
