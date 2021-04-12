@@ -13,16 +13,18 @@
 setwd("/Users/dondealban/Dropbox/Research/Mindoro/landscape patterns/")
 
 # Load Libraries --------------------------
+library(reshape2)
 library(tidyverse)
 
 # Read Data Files ------------------------
 csvLM <- read.csv(file="mindoro-pattern-metrics-wide-final-allregions_rev.csv", header=TRUE, sep=",")
-
-# Rename column names
-colnames(csvLM) <- c("Code.Region.Year","Site","Year","Class.Code","Land.Cover", "Percent.Landscape",
+colnames(csvLM) <- c("Code.Region.Year","Site","Year","Class.Code","Land.Cover","Percent.Landscape",
                      "Number.Patches","Mean.Patch.Area","Edge.Density","Mean.Shape.Index","Mean.NN.Distance")
 
-# Create full dataframe 
-dfLMall <- csvLM
+# Reorganise Input Data Files ------------
+# Convert dataframe from wide-format to long-format
+dfLMall <- melt(csvLM, id.vars=c("Code.Region.Year","Site","Year","Class.Code","Land.Cover"))
+colnames(dfLMall) <- c("Code.Region.Year","Site","Year","Class.Code","Land.Cover","Landscape.Metrics","Value")
+
 # Create subset dataframe by extracting forest/grassland land cover types
-dfLMsub <- csvLM %>% filter(csvLM$Land.Cover %in% "Forest" | csvLM$Land.Cover %in% "Grassland")
+dfLMsub <- dfLMall %>% filter(dfLMall$Land.Cover %in% "Forest" | dfLMall$Land.Cover %in% "Grassland")
