@@ -67,6 +67,6 @@ plot2 <- plot2 + theme(panel.grid.major=element_blank(), panel.grid.minor=elemen
 # Save Output Plots -----------------------
 
 # Output boxplots to a PDF file
-ggsave(plot1, file="Landscape-Metrics_All-LandCover_Mindoro_v1.pdf", width=50, height=25, units="cm", dpi=300)
-ggsave(plot2, file="Landscape-Metrics_Forest-Grassland_Mindoro_v1.pdf", width=50, height=25, units="cm", dpi=300)
+ggsave(plot1, file="Landscape-Metrics_All-LandCover_Mindoro_v2.pdf", width=50, height=25, units="cm", dpi=300)
+ggsave(plot2, file="Landscape-Metrics_Forest-Grassland_Mindoro_v2.pdf", width=50, height=25, units="cm", dpi=300)
 
